@@ -85,16 +85,17 @@ export function Header() {
               </motion.div>
             </Link>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="hidden md:block">
-              <Button 
-                variant="outline" 
-                className="rounded-full gap-2 px-4 h-12 border-border/50"
-                data-testid="button-login"
-              >
-                <User className="w-4 h-4" />
-                <span>Login</span>
-              </Button>
-            </motion.div>
+            <Link href="/login" data-testid="link-login">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="hidden md:block">
+                <Button 
+                  variant="outline" 
+                  className="rounded-full gap-2 px-4 h-12 border-border/50"
+                >
+                  <User className="w-4 h-4" />
+                  <span>Login</span>
+                </Button>
+              </motion.div>
+            </Link>
 
             <Button
               variant="ghost"
@@ -139,10 +140,12 @@ export function Header() {
                   <p className="text-sm text-muted-foreground">123 Main Street</p>
                 </div>
               </button>
-              <Button variant="outline" className="w-full rounded-xl h-12 gap-2" data-testid="button-login-mobile">
-                <User className="w-4 h-4" />
-                Login / Sign Up
-              </Button>
+              <Link href="/login">
+                <Button variant="outline" className="w-full rounded-xl h-12 gap-2" data-testid="button-login-mobile">
+                  <User className="w-4 h-4" />
+                  Login / Sign Up
+                </Button>
+              </Link>
             </div>
           </motion.div>
         )}
