@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./styles/themes.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -185,6 +186,54 @@
     content: attr(data-placeholder);
     color: hsl(var(--muted-foreground));
     pointer-events: none;
+  }
+
+  /* Modern, stylish scrollbar for scrollable lists (uses CSS vars for dynamic color) */
+  .modern-scrollbar {
+    scrollbar-width: thin; /* Firefox */
+    --scroll-thumb-start: var(--scroll-thumb-start, rgba(250,204,21,0.95));
+    --scroll-thumb-end: var(--scroll-thumb-end, rgba(245,158,11,0.95));
+    scrollbar-color: var(--scroll-thumb-start) transparent;
+  }
+  .modern-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .modern-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .modern-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--scroll-thumb-start), var(--scroll-thumb-end));
+    border-radius: 9999px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.45);
+    border: 2px solid rgba(255,255,255,0.04);
+    background-clip: padding-box;
+    transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+    opacity: 0.95;
+  }
+  .modern-scrollbar::-webkit-scrollbar-thumb:hover {
+    transform: translateY(1px) scaleY(1.03);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.55);
+    opacity: 1;
+  }
+  .modern-scrollbar::-webkit-scrollbar-button { display: none; }
+
+  /* subtle chevron bounce for scroll hint */
+  .chevron-bounce { animation: chevron-bounce 1.2s ease-in-out infinite; transform-origin: center; }
+  @keyframes chevron-bounce { 0% { transform: translateY(0); } 50% { transform: translateY(-4px); } 100% { transform: translateY(0); } }
+
+  /* Optional subtle top/bottom scroll shadows (used by the membership list) */
+  .scroll-shadow-top {
+    pointer-events: none;
+    position: absolute;
+    left: 0; right: 0; top: 0; height: 1rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0.25), transparent);
+  }
+  .scroll-shadow-bottom {
+    pointer-events: none;
+    position: absolute;
+    left: 0; right: 0; bottom: 0; height: 1.2rem;
+    background: linear-gradient(0deg, rgba(0,0,0,0.28), transparent);
   }
 }
 

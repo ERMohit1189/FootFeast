@@ -10,7 +10,7 @@ import { Header } from '@/components/Header';
 export default function Cart() {
   const { cart, addToCart, removeFromCart, clearCart, cartTotal, cartCount } = useCart();
 
-  const deliveryFee = cartTotal >= 25 ? 0 : 2.99;
+  const deliveryFee = cartTotal >= 500 ? 0 : 49;
   const taxes = cartTotal * 0.08;
   const grandTotal = cartTotal + deliveryFee + taxes;
 
@@ -103,7 +103,7 @@ export default function Cart() {
                     />
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold mb-1">{item.name}</h3>
-                      <p className="text-lg font-bold text-primary">${item.price.toFixed(2)}</p>
+                      <p className="text-lg font-bold text-primary">₹{item.price}</p>
                     </div>
                     <div className="flex items-center gap-0 bg-muted rounded-xl overflow-hidden h-fit">
                       <Button
@@ -186,30 +186,30 @@ export default function Cart() {
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span className="font-medium">${cartTotal.toFixed(2)}</span>
+                  <span className="font-medium">₹{cartTotal}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Delivery Fee</span>
                   <span className={`font-medium ${deliveryFee === 0 ? 'text-accent' : ''}`}>
-                    {deliveryFee === 0 ? 'FREE' : `$${deliveryFee.toFixed(2)}`}
+                    {deliveryFee === 0 ? 'FREE' : `₹${deliveryFee}`}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Taxes & Fees</span>
-                  <span className="font-medium">${taxes.toFixed(2)}</span>
+                  <span className="font-medium">₹{taxes.toFixed(0)}</span>
                 </div>
                 
                 <Separator className="my-4" />
                 
                 <div className="flex justify-between text-base">
                   <span className="font-bold">Total</span>
-                  <span className="font-bold text-primary" data-testid="text-grand-total">${grandTotal.toFixed(2)}</span>
+                  <span className="font-bold text-primary" data-testid="text-grand-total">₹{grandTotal.toFixed(0)}</span>
                 </div>
               </div>
 
               {deliveryFee === 0 && (
                 <div className="mt-4 p-3 bg-accent/10 rounded-xl text-sm text-accent font-medium text-center">
-                  🎉 You saved $2.99 on delivery!
+                  🎉 You saved ₹49 on delivery!
                 </div>
               )}
 

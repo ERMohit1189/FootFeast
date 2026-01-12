@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
+import { Phone, Twitter, Instagram, Linkedin } from 'lucide-react';
 
-export function Footer() {
+export function Footer({ theme }: { theme?: 'light'|'dark' }) {
+  const container = theme === 'dark' ? 'bg-slate-900 text-white border-t border-slate-800' : 'bg-card border-t border-border/50';
+
   return (
-    <footer className="bg-card border-t border-border/50 mt-auto">
+    <footer className={`${container} mt-auto`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="col-span-2 md:col-span-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-orange-400 flex items-center justify-center">
                 <span className="text-white font-bold text-xl">F</span>
@@ -18,15 +21,25 @@ export function Footer() {
               The best food delivery app in town. Fresh, fast, and delicious.
             </p>
             <div className="flex gap-3">
-              {['📱', '🐦', '📷', '💼'].map((icon, i) => (
-                <motion.button
+              {[
+                { Icon: Phone, href: 'tel:+15555555555', label: 'phone', color: 'text-emerald-600', hoverBg: 'hover:bg-emerald-600/10' },
+                { Icon: Twitter, href: 'https://twitter.com/fooddash', label: 'twitter', color: 'text-sky-500', hoverBg: 'hover:bg-sky-500/10' },
+                { Icon: Instagram, href: 'https://instagram.com/fooddash', label: 'instagram', color: 'text-pink-500', hoverBg: 'hover:bg-pink-500/10' },
+                { Icon: Linkedin, href: 'https://linkedin.com/company/fooddash', label: 'linkedin', color: 'text-sky-700', hoverBg: 'hover:bg-sky-700/10' },
+              ].map(({ Icon, href, label, color, hoverBg }, i) => (
+                <motion.a
                   key={i}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-lg hover:bg-primary/10 transition-colors"
+                  aria-label={`social-${label}`}
+                  title={label}
+                  className={`w-10 h-10 rounded-full bg-muted flex items-center justify-center text-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary ${hoverBg}`}
                 >
-                  {icon}
-                </motion.button>
+                  <Icon className={`w-4 h-4 ${color}`} />
+                </motion.a>
               ))}
             </div>
           </div>
@@ -34,29 +47,29 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Press</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">About Us</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Careers</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Blog</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Press</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Help Center</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Safety</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Help Center</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Safety</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Privacy Policy</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold mb-4">Partner with us</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Add Your Restaurant</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Become a Rider</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">For Corporates</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Add Your Restaurant</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Become a Rider</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">For Corporates</a></li>
             </ul>
           </div>
         </div>

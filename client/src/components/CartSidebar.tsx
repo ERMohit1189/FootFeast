@@ -30,7 +30,7 @@ export function CartSidebar() {
                 </div>
                 <div>
                   <p className="font-bold">{cartCount} item{cartCount > 1 ? 's' : ''}</p>
-                  <p className="text-sm text-white/80">${cartTotal.toFixed(2)}</p>
+                  <p className="text-sm text-white/80">₹{cartTotal}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2 font-semibold">
