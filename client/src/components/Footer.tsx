@@ -58,10 +58,10 @@ export function Footer({ theme }: { theme?: 'light'|'dark' }) {
           <div>
             <h4 className="font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Help Center</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Safety</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Privacy Policy</a></li>
+              <li><Link href="/admin/login" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Admin Login</Link></li>
+              <li><Link href="/delivery/login" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Delivery Login</Link></li>
+              <li><Link href="/help" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Help Center</Link></li>
+              <li><Link href="/safety" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Safety</Link></li>
             </ul>
           </div>
 

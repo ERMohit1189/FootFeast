@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Search, MapPin, ShoppingBag, User, Menu, X } from 'lucide-react';
+import { Search, MapPin, ShoppingBag, User, Menu, X, Store } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -104,7 +104,19 @@ export function Header({ theme }: { theme?: 'light' | 'dark' }) {
                   className="rounded-full gap-2 px-4 h-12 border-border/50"
                 >
                   <User className="w-4 h-4" />
-                  <span>Login</span>
+                  <span>Customer Login</span>
+                </Button>
+              </motion.div>
+            </Link>
+
+            <Link href="/restaurant/login" data-testid="link-restaurant-login">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="hidden md:block">
+                <Button 
+                  variant="outline" 
+                  className="rounded-full gap-2 px-4 h-12 border-border/50 bg-primary/5 border-primary/20 text-primary"
+                >
+                  <Store className="w-4 h-4" />
+                  <span>Restaurant Login</span>
                 </Button>
               </motion.div>
             </Link>
