@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Phone, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Link } from 'wouter';
 
 export function Footer({ theme }: { theme?: 'light'|'dark' }) {
   const container = theme === 'dark' ? 'bg-slate-900 text-white border-t border-slate-800' : 'bg-card border-t border-border/50';
@@ -67,9 +68,10 @@ export function Footer({ theme }: { theme?: 'light'|'dark' }) {
           <div>
             <h4 className="font-semibold mb-4">Partner with us</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Add Your Restaurant</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Become a Rider</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">For Corporates</a></li>
+              <li><Link href="/add-restaurant" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Add Your Restaurant</Link></li>
+              <li><Link href="/restaurant/login" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Restaurant Login</Link></li>
+              <li><Link href="/become-rider" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Become a Rider</Link></li>
+              <li><Link href="/corporate" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">For Corporates</Link></li>
             </ul>
           </div>
         </div>
