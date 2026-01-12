@@ -45,7 +45,7 @@ export const restaurants: Restaurant[] = [
     deliveryFee: 'Free',
     distance: '1.2 km',
     featured: true,
-    offer: '50% OFF up to $10'
+    offer: '50% OFF up to ₹100'
   },
   {
     id: '2',
@@ -54,7 +54,7 @@ export const restaurants: Restaurant[] = [
     cuisine: 'Italian, Pizza, Pasta',
     rating: 4.3,
     deliveryTime: '30-40 min',
-    deliveryFee: '$2.99',
+    deliveryFee: '₹49',
     distance: '2.5 km',
     featured: true,
     offer: 'Buy 1 Get 1 Free'
@@ -66,7 +66,7 @@ export const restaurants: Restaurant[] = [
     cuisine: 'Japanese, Sushi, Asian',
     rating: 4.7,
     deliveryTime: '35-45 min',
-    deliveryFee: '$3.99',
+    deliveryFee: '₹59',
     distance: '3.1 km',
     featured: true
   },
@@ -88,7 +88,7 @@ export const restaurants: Restaurant[] = [
     cuisine: 'Chinese, Asian, Noodles',
     rating: 4.4,
     deliveryTime: '25-35 min',
-    deliveryFee: '$1.99',
+    deliveryFee: '₹29',
     distance: '1.8 km'
   },
   {
@@ -98,9 +98,9 @@ export const restaurants: Restaurant[] = [
     cuisine: 'Indian, Curry, Biryani',
     rating: 4.6,
     deliveryTime: '30-40 min',
-    deliveryFee: '$2.49',
+    deliveryFee: '₹39',
     distance: '2.2 km',
-    offer: 'Free Naan with orders $25+'
+    offer: 'Free Naan with orders ₹500+'
   },
   {
     id: '7',
@@ -119,7 +119,7 @@ export const restaurants: Restaurant[] = [
     cuisine: 'Desserts, Bakery, Cakes',
     rating: 4.8,
     deliveryTime: '15-25 min',
-    deliveryFee: '$1.99',
+    deliveryFee: '₹29',
     distance: '0.5 km',
     featured: true
   }
@@ -127,41 +127,41 @@ export const restaurants: Restaurant[] = [
 
 export const menuItems: Record<string, MenuItem[]> = {
   '1': [
-    { id: '1-1', name: 'Classic Cheeseburger', description: 'Juicy beef patty with melted cheddar, lettuce, tomato, and our secret sauce', price: 12.99, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=200&fit=crop', category: 'Burgers', isVeg: false, isBestseller: true },
-    { id: '1-2', name: 'Double Bacon Burger', description: 'Two beef patties with crispy bacon, cheese, and caramelized onions', price: 16.99, image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=300&h=200&fit=crop', category: 'Burgers', isVeg: false, isBestseller: true },
-    { id: '1-3', name: 'Veggie Delight', description: 'Plant-based patty with avocado, sprouts, and vegan mayo', price: 11.99, image: 'https://images.unsplash.com/photo-1520072959219-c595dc870360?w=300&h=200&fit=crop', category: 'Burgers', isVeg: true },
-    { id: '1-4', name: 'Crispy Chicken Burger', description: 'Crispy fried chicken breast with coleslaw and pickles', price: 13.99, image: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=300&h=200&fit=crop', category: 'Burgers', isVeg: false },
-    { id: '1-5', name: 'Loaded Fries', description: 'Crispy fries topped with cheese, bacon bits, and sour cream', price: 7.99, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300&h=200&fit=crop', category: 'Sides', isVeg: false },
-    { id: '1-6', name: 'Onion Rings', description: 'Golden crispy onion rings with ranch dipping sauce', price: 5.99, image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?w=300&h=200&fit=crop', category: 'Sides', isVeg: true },
-    { id: '1-7', name: 'Chocolate Milkshake', description: 'Rich and creamy chocolate milkshake topped with whipped cream', price: 6.99, image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=300&h=200&fit=crop', category: 'Drinks', isVeg: true },
-    { id: '1-8', name: 'Strawberry Shake', description: 'Fresh strawberry milkshake with real fruit', price: 6.99, image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=300&h=200&fit=crop', category: 'Drinks', isVeg: true }
+    { id: '1-1', name: 'Classic Cheeseburger', description: 'Juicy beef patty with melted cheddar, lettuce, tomato, and our secret sauce', price: 299, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=200&fit=crop', category: 'Burgers', isVeg: false, isBestseller: true },
+    { id: '1-2', name: 'Double Bacon Burger', description: 'Two beef patties with crispy bacon, cheese, and caramelized onions', price: 399, image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=300&h=200&fit=crop', category: 'Burgers', isVeg: false, isBestseller: true },
+    { id: '1-3', name: 'Veggie Delight', description: 'Plant-based patty with avocado, sprouts, and vegan mayo', price: 249, image: 'https://images.unsplash.com/photo-1520072959219-c595dc870360?w=300&h=200&fit=crop', category: 'Burgers', isVeg: true },
+    { id: '1-4', name: 'Crispy Chicken Burger', description: 'Crispy fried chicken breast with coleslaw and pickles', price: 329, image: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=300&h=200&fit=crop', category: 'Burgers', isVeg: false },
+    { id: '1-5', name: 'Loaded Fries', description: 'Crispy fries topped with cheese, bacon bits, and sour cream', price: 179, image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300&h=200&fit=crop', category: 'Sides', isVeg: false },
+    { id: '1-6', name: 'Onion Rings', description: 'Golden crispy onion rings with ranch dipping sauce', price: 149, image: 'https://images.unsplash.com/photo-1639024471283-03518883512d?w=300&h=200&fit=crop', category: 'Sides', isVeg: true },
+    { id: '1-7', name: 'Chocolate Milkshake', description: 'Rich and creamy chocolate milkshake topped with whipped cream', price: 159, image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=300&h=200&fit=crop', category: 'Drinks', isVeg: true },
+    { id: '1-8', name: 'Strawberry Shake', description: 'Fresh strawberry milkshake with real fruit', price: 159, image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=300&h=200&fit=crop', category: 'Drinks', isVeg: true }
   ],
   '2': [
-    { id: '2-1', name: 'Margherita Pizza', description: 'Fresh tomato sauce, mozzarella, and basil on a crispy crust', price: 14.99, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=300&h=200&fit=crop', category: 'Pizza', isVeg: true, isBestseller: true },
-    { id: '2-2', name: 'Pepperoni Supreme', description: 'Loaded with pepperoni, extra cheese, and oregano', price: 17.99, image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=300&h=200&fit=crop', category: 'Pizza', isVeg: false, isBestseller: true },
-    { id: '2-3', name: 'BBQ Chicken Pizza', description: 'BBQ sauce, grilled chicken, red onions, and cilantro', price: 18.99, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=300&h=200&fit=crop', category: 'Pizza', isVeg: false },
-    { id: '2-4', name: 'Veggie Garden', description: 'Bell peppers, mushrooms, olives, tomatoes, and onions', price: 15.99, image: 'https://images.unsplash.com/photo-1511689660979-10d2b1aada49?w=300&h=200&fit=crop', category: 'Pizza', isVeg: true },
-    { id: '2-5', name: 'Garlic Breadsticks', description: 'Warm breadsticks with garlic butter and parmesan', price: 6.99, image: 'https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?w=300&h=200&fit=crop', category: 'Sides', isVeg: true },
-    { id: '2-6', name: 'Caesar Salad', description: 'Crisp romaine, parmesan, croutons, and Caesar dressing', price: 8.99, image: 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=300&h=200&fit=crop', category: 'Sides', isVeg: true }
+    { id: '2-1', name: 'Margherita Pizza', description: 'Fresh tomato sauce, mozzarella, and basil on a crispy crust', price: 349, image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=300&h=200&fit=crop', category: 'Pizza', isVeg: true, isBestseller: true },
+    { id: '2-2', name: 'Pepperoni Supreme', description: 'Loaded with pepperoni, extra cheese, and oregano', price: 449, image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=300&h=200&fit=crop', category: 'Pizza', isVeg: false, isBestseller: true },
+    { id: '2-3', name: 'BBQ Chicken Pizza', description: 'BBQ sauce, grilled chicken, red onions, and cilantro', price: 479, image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=300&h=200&fit=crop', category: 'Pizza', isVeg: false },
+    { id: '2-4', name: 'Veggie Garden', description: 'Bell peppers, mushrooms, olives, tomatoes, and onions', price: 379, image: 'https://images.unsplash.com/photo-1511689660979-10d2b1aada49?w=300&h=200&fit=crop', category: 'Pizza', isVeg: true },
+    { id: '2-5', name: 'Garlic Breadsticks', description: 'Warm breadsticks with garlic butter and parmesan', price: 149, image: 'https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?w=300&h=200&fit=crop', category: 'Sides', isVeg: true },
+    { id: '2-6', name: 'Caesar Salad', description: 'Crisp romaine, parmesan, croutons, and Caesar dressing', price: 199, image: 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=300&h=200&fit=crop', category: 'Sides', isVeg: true }
   ],
   '3': [
-    { id: '3-1', name: 'Salmon Nigiri (4 pcs)', description: 'Fresh Atlantic salmon on seasoned rice', price: 12.99, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=300&h=200&fit=crop', category: 'Nigiri', isVeg: false, isBestseller: true },
-    { id: '3-2', name: 'Dragon Roll', description: 'Shrimp tempura, eel, avocado, and tobiko', price: 16.99, image: 'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=300&h=200&fit=crop', category: 'Rolls', isVeg: false, isBestseller: true },
-    { id: '3-3', name: 'California Roll', description: 'Crab, avocado, and cucumber with sesame seeds', price: 11.99, image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=300&h=200&fit=crop', category: 'Rolls', isVeg: false },
-    { id: '3-4', name: 'Veggie Roll', description: 'Avocado, cucumber, carrot, and asparagus', price: 9.99, image: 'https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=300&h=200&fit=crop', category: 'Rolls', isVeg: true },
-    { id: '3-5', name: 'Miso Soup', description: 'Traditional Japanese soup with tofu and seaweed', price: 4.99, image: 'https://images.unsplash.com/photo-1607301405390-d831c242f59b?w=300&h=200&fit=crop', category: 'Soup', isVeg: true },
-    { id: '3-6', name: 'Edamame', description: 'Steamed soybeans with sea salt', price: 5.99, image: 'https://images.unsplash.com/photo-1564894809611-1742fc40ed80?w=300&h=200&fit=crop', category: 'Appetizers', isVeg: true }
+    { id: '3-1', name: 'Salmon Nigiri (4 pcs)', description: 'Fresh Atlantic salmon on seasoned rice', price: 399, image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=300&h=200&fit=crop', category: 'Nigiri', isVeg: false, isBestseller: true },
+    { id: '3-2', name: 'Dragon Roll', description: 'Shrimp tempura, eel, avocado, and tobiko', price: 549, image: 'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=300&h=200&fit=crop', category: 'Rolls', isVeg: false, isBestseller: true },
+    { id: '3-3', name: 'California Roll', description: 'Crab, avocado, and cucumber with sesame seeds', price: 349, image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=300&h=200&fit=crop', category: 'Rolls', isVeg: false },
+    { id: '3-4', name: 'Veggie Roll', description: 'Avocado, cucumber, carrot, and asparagus', price: 249, image: 'https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=300&h=200&fit=crop', category: 'Rolls', isVeg: true },
+    { id: '3-5', name: 'Miso Soup', description: 'Traditional Japanese soup with tofu and seaweed', price: 129, image: 'https://images.unsplash.com/photo-1607301405390-d831c242f59b?w=300&h=200&fit=crop', category: 'Soup', isVeg: true },
+    { id: '3-6', name: 'Edamame', description: 'Steamed soybeans with sea salt', price: 149, image: 'https://images.unsplash.com/photo-1564894809611-1742fc40ed80?w=300&h=200&fit=crop', category: 'Appetizers', isVeg: true }
   ]
 };
 
 Object.keys(restaurants.reduce((acc, r) => ({ ...acc, [r.id]: true }), {})).forEach(id => {
   if (!menuItems[id]) {
     menuItems[id] = [
-      { id: `${id}-1`, name: 'Signature Dish', description: 'Our chef\'s special creation with premium ingredients', price: 15.99, image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&h=200&fit=crop', category: 'Mains', isVeg: false, isBestseller: true },
-      { id: `${id}-2`, name: 'House Special', description: 'A crowd favorite made with love', price: 13.99, image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=300&h=200&fit=crop', category: 'Mains', isVeg: false },
-      { id: `${id}-3`, name: 'Vegetarian Delight', description: 'Fresh vegetables prepared to perfection', price: 11.99, image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=300&h=200&fit=crop', category: 'Mains', isVeg: true },
-      { id: `${id}-4`, name: 'Classic Appetizer', description: 'Perfect way to start your meal', price: 7.99, image: 'https://images.unsplash.com/photo-1541014741259-de529411b96a?w=300&h=200&fit=crop', category: 'Appetizers', isVeg: true },
-      { id: `${id}-5`, name: 'Refreshing Beverage', description: 'Cool and refreshing drink', price: 4.99, image: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop', category: 'Drinks', isVeg: true }
+      { id: `${id}-1`, name: 'Signature Dish', description: 'Our chef\'s special creation with premium ingredients', price: 399, image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&h=200&fit=crop', category: 'Mains', isVeg: false, isBestseller: true },
+      { id: `${id}-2`, name: 'House Special', description: 'A crowd favorite made with love', price: 329, image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=300&h=200&fit=crop', category: 'Mains', isVeg: false },
+      { id: `${id}-3`, name: 'Vegetarian Delight', description: 'Fresh vegetables prepared to perfection', price: 279, image: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=300&h=200&fit=crop', category: 'Mains', isVeg: true },
+      { id: `${id}-4`, name: 'Classic Appetizer', description: 'Perfect way to start your meal', price: 179, image: 'https://images.unsplash.com/photo-1541014741259-de529411b96a?w=300&h=200&fit=crop', category: 'Appetizers', isVeg: true },
+      { id: `${id}-5`, name: 'Refreshing Beverage', description: 'Cool and refreshing drink', price: 99, image: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop', category: 'Drinks', isVeg: true }
     ];
   }
 });

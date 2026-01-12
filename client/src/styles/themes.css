@@ -1,0 +1,109 @@
+/* Theme variables for Home2 (gold, red, blue, silver, pink)
+   Apply the attribute `data-theme="<name>"` on a root container to activate.
+   Variables exposed:
+   --page-bg: full-page background
+   --section-bg: background for panels/sections
+   --section-text: text color for section headings/body
+   --card-bg: card background
+   --card-text: card text color
+   --heading: heading color
+*/
+
+/* Fallback (gold) */
+:root {
+  --page-bg: linear-gradient(135deg, #fffbf0, #fff4e4);
+  --section-bg: linear-gradient(135deg, rgba(255,247,237,0.92), rgba(255,244,228,0.92));
+  --section-text: #92400e;
+  --card-bg: rgba(255,255,255,0.95);
+  --card-text: #111827;
+  --heading: #92400e;
+}
+
+[data-theme="gold"][data-section-tone="light"] {
+  --section-bg: linear-gradient(135deg, rgba(255,247,237,0.92), rgba(255,244,228,0.92));
+  --section-text: #92400e;
+  --card-bg: rgba(255,255,255,0.95);
+  --card-text: #111827;
+  --heading: #92400e;
+}
+
+[data-theme="gold"][data-section-tone="dark"] {
+  --section-bg: linear-gradient(135deg, rgba(88,40,5,0.92), rgba(53,28,9,0.92)); /* darker amber */
+  --section-text: #FFF6EA; /* light text */
+  --card-bg: rgba(0,0,0,0.56);
+  --card-text: #FAF7F2;
+  --heading: #FFD78A;
+  background: var(--page-bg);
+}
+
+[data-theme="red"][data-section-tone="light"] {
+  --section-bg: linear-gradient(135deg, rgba(255,240,242,0.92), rgba(255,234,246,0.92));
+  --section-text: #7f1d1d;
+  --card-bg: rgba(255,255,255,0.95);
+  --card-text: #111827;
+  --heading: #b91c1c;
+}
+
+[data-theme="red"][data-section-tone="dark"] {
+  --page-bg: linear-gradient(135deg, #fff2f4, #fff0fb);
+  --section-bg: linear-gradient(135deg, rgba(85,7,10,0.92), rgba(55,6,8,0.92)); /* darker red */
+  --section-text: #FFECEC;
+  --card-bg: rgba(0,0,0,0.56);
+  --card-text: #FFECEC;
+  --heading: #FF9AA2;
+  background: var(--page-bg);
+}
+
+[data-theme="blue"][data-section-tone="light"] {
+  --section-bg: linear-gradient(135deg, rgba(239,246,255,0.92), rgba(235,249,255,0.92));
+  --section-text: #0f172a;
+  --card-bg: rgba(255,255,255,0.95);
+  --card-text: #0f172a;
+  --heading: #0369a1;
+}
+
+[data-theme="blue"][data-section-tone="dark"] {
+  --page-bg: linear-gradient(135deg, #eff6ff, #ebf9ff);
+  --section-bg: linear-gradient(135deg, rgba(2,6,23,0.92), rgba(8,20,35,0.92)); /* darker blue */
+  --section-text: #DFF6FF;
+  --card-bg: rgba(0,0,0,0.56);
+  --card-text: #DFF6FF;
+  --heading: #7DD3FC;
+  background: var(--page-bg);
+}
+
+[data-theme="silver"][data-section-tone="light"] {
+  --section-bg: linear-gradient(135deg, rgba(247,250,252,0.96), rgba(241,245,249,0.96));
+  --section-text: #111827;
+  --card-bg: rgba(255,255,255,0.95);
+  --card-text: #111827;
+  --heading: #0f172a;
+}
+
+[data-theme="silver"][data-section-tone="dark"] {
+  --page-bg: linear-gradient(135deg, #f7fafc, #f1f5f9);
+  --section-bg: linear-gradient(135deg, rgba(15,23,42,0.92), rgba(20,28,48,0.92)); /* dark slate */
+  --section-text: #E6EEF6;
+  --card-bg: rgba(0,0,0,0.56);
+  --card-text: #E6EEF6;
+  --heading: #CBD5E1;
+  background: var(--page-bg);
+}
+
+[data-theme="pink"][data-section-tone="light"] {
+  --section-bg: linear-gradient(135deg, rgba(255,245,250,0.92), rgba(255,238,245,0.92));
+  --section-text: #831843;
+  --card-bg: rgba(255,255,255,0.95);
+  --card-text: #111827;
+  --heading: #be185d;
+}
+
+[data-theme="pink"][data-section-tone="dark"] {
+  --page-bg: linear-gradient(135deg, #fff5fa, #ffeeF5);
+  --section-bg: linear-gradient(135deg, rgba(38,6,26,0.92), rgba(60,12,36,0.92)); /* darker pink */
+  --section-text: #FFE6F0;
+  --card-bg: rgba(0,0,0,0.56);
+  --card-text: #FFE6F0;
+  --heading: #FF9ACD;
+  background: var(--page-bg);
+}

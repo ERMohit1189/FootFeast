@@ -64,7 +64,7 @@ export function MenuItemCard({ item, restaurantId, restaurantName, index = 0 }: 
           </div>
         </div>
         
-        <p className="text-lg font-bold mb-2">${item.price.toFixed(2)}</p>
+        <p className="text-lg font-bold mb-2">₹{item.price}</p>
         <p className="text-sm text-muted-foreground line-clamp-2">{item.description}</p>
       </div>
 
