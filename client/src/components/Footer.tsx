@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import { Phone, Twitter, Instagram, Linkedin } from 'lucide-react';
+<<<<<<< HEAD
 import { Link } from 'wouter';
+=======
+>>>>>>> 0e04964beb3e4bcff8cc0805fe7d4c090c8388de
 
 export function Footer({ theme }: { theme?: 'light'|'dark' }) {
   const container = theme === 'dark' ? 'bg-slate-900 text-white border-t border-slate-800' : 'bg-card border-t border-border/50';
@@ -58,20 +61,33 @@ export function Footer({ theme }: { theme?: 'light'|'dark' }) {
           <div>
             <h4 className="font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
+<<<<<<< HEAD
               <li><Link href="/admin/login" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Admin Login</Link></li>
               <li><Link href="/delivery/login" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Delivery Login</Link></li>
               <li><Link href="/help" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Help Center</Link></li>
               <li><Link href="/safety" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Safety</Link></li>
+=======
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Help Center</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Safety</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Privacy Policy</a></li>
+>>>>>>> 0e04964beb3e4bcff8cc0805fe7d4c090c8388de
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold mb-4">Partner with us</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
+<<<<<<< HEAD
               <li><Link href="/add-restaurant" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Add Your Restaurant</Link></li>
               <li><Link href="/restaurant/login" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Restaurant Login</Link></li>
               <li><Link href="/become-rider" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Become a Rider</Link></li>
               <li><Link href="/corporate" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">For Corporates</Link></li>
+=======
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Add Your Restaurant</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">Become a Rider</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary">For Corporates</a></li>
+>>>>>>> 0e04964beb3e4bcff8cc0805fe7d4c090c8388de
             </ul>
           </div>
         </div>
