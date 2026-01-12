@@ -14,20 +14,53 @@ import {
   ChevronRight,
   Bell,
   Search,
-  LogOut
+  LogOut,
+  ArrowUpRight,
+  ArrowDownRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Link } from 'wouter';
+import { 
+  BarChart, 
+  Bar, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  ResponsiveContainer,
+  AreaChart,
+  Area
+} from 'recharts';
 
 export default function RestaurantDashboard() {
   const stats = [
-    { title: 'Total Orders', value: '156', icon: ShoppingBag, color: 'text-blue-600', bg: 'bg-blue-50' },
-    { title: 'Revenue', value: '₹45,230', icon: IndianRupee, color: 'text-green-600', bg: 'bg-green-50' },
-    { title: 'Avg. Rating', value: '4.8', icon: Star, color: 'text-yellow-600', bg: 'bg-yellow-50' },
-    { title: 'New Customers', value: '24', icon: Users, color: 'text-purple-600', bg: 'bg-purple-50' },
+    { title: 'Total Orders', value: '1,256', change: '+12.5%', trend: 'up', icon: ShoppingBag, color: 'text-blue-600', bg: 'bg-blue-50' },
+    { title: 'Revenue', value: '₹1,45,230', change: '+18.2%', trend: 'up', icon: IndianRupee, color: 'text-green-600', bg: 'bg-green-50' },
+    { title: 'Avg. Rating', value: '4.8', change: '+0.2%', trend: 'up', icon: Star, color: 'text-yellow-600', bg: 'bg-yellow-50' },
+    { title: 'Active Customers', value: '824', change: '-2.4%', trend: 'down', icon: Users, color: 'text-purple-600', bg: 'bg-purple-50' },
+  ];
+
+  const salesData = [
+    { name: 'Mon', sales: 4000 },
+    { name: 'Tue', sales: 3000 },
+    { name: 'Wed', sales: 2000 },
+    { name: 'Thu', sales: 2780 },
+    { name: 'Fri', sales: 1890 },
+    { name: 'Sat', sales: 2390 },
+    { name: 'Sun', sales: 3490 },
+  ];
+
+  const orderTrends = [
+    { time: '10am', orders: 12 },
+    { time: '12pm', orders: 45 },
+    { time: '2pm', orders: 32 },
+    { time: '4pm', orders: 28 },
+    { time: '6pm', orders: 56 },
+    { time: '8pm', orders: 72 },
+    { time: '10pm', orders: 48 },
   ];
 
   const recentOrders = [
@@ -141,8 +174,11 @@ export default function RestaurantDashboard() {
                     <div className={`p-2 rounded-lg ${stat.bg}`}>
                       <stat.icon className={`w-6 h-6 ${stat.color}`} />
                     </div>
-                    <Badge variant="secondary" className="bg-green-100 text-green-700 hover:bg-green-100 border-none">
-                      +12.5%
+                    <Badge variant="secondary" className={`${
+                      stat.trend === 'up' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                    } hover:bg-opacity-80 border-none flex items-center gap-1`}>
+                      {stat.trend === 'up' ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
+                      {stat.change}
                     </Badge>
                   </div>
                   <h3 className="text-slate-500 text-sm font-medium">{stat.title}</h3>
@@ -150,6 +186,56 @@ export default function RestaurantDashboard() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Charts Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Revenue Overview</CardTitle>
+                <CardDescription>Daily revenue performance for the current week.</CardDescription>
+              </CardHeader>
+              <CardContent className="h-[300px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={salesData}>
+                    <defs>
+                      <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#ea580c" stopOpacity={0.1}/>
+                        <stop offset="95%" stopColor="#ea580c" stopOpacity={0}/>
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 12}} dy={10} />
+                    <YAxis axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 12}} />
+                    <Tooltip 
+                      contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                    />
+                    <Area type="monotone" dataKey="sales" stroke="#ea580c" strokeWidth={2} fillOpacity={1} fill="url(#colorSales)" />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Order Trends</CardTitle>
+                <CardDescription>Real-time order volume throughout the day.</CardDescription>
+              </CardHeader>
+              <CardContent className="h-[300px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={orderTrends}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
+                    <XAxis dataKey="time" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 12}} dy={10} />
+                    <YAxis axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 12}} />
+                    <Tooltip 
+                      contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                      cursor={{fill: '#f8fafc'}}
+                    />
+                    <Bar dataKey="orders" fill="#3b82f6" radius={[4, 4, 0, 0]} barSize={32} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </CardContent>
+            </Card>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
