@@ -10,6 +10,7 @@ import Home3 from "@/pages/Home3";
 import Restaurant from "@/pages/Restaurant";
 import RestaurantLogin from "@/pages/RestaurantLogin";
 import RestaurantDashboard from "@/pages/RestaurantDashboard";
+import RestaurantOrders from "@/pages/RestaurantOrders";
 import Cart from "@/pages/Cart";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
@@ -38,6 +39,7 @@ function Router() {
       <Route path="/home3" component={Home3} />
       <Route path="/restaurant/login" component={RestaurantLogin} />
       <Route path="/restaurant/dashboard" component={RestaurantDashboard} />
+      <Route path="/restaurant/orders" component={RestaurantOrders} />
       <Route path="/restaurant/:id" component={Restaurant} />
       <Route path="/cart" component={Cart} />
       <Route path="/login" component={Login} />
