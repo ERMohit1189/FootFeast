@@ -9,14 +9,13 @@ import {
   LogOut,
   Search,
   Bell,
-  Clock,
-  CheckCircle2,
-  AlertCircle,
+  Plus,
+  Edit2,
+  Trash2,
+  MoreVertical,
   ChevronRight,
   Filter,
-  Download,
-  MoreVertical,
-  ExternalLink
+  Image as ImageIcon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -38,35 +37,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function RestaurantOrders() {
-  const orders = [
-    { id: '#ORD-7821', customer: 'Rahul Sharma', items: '2x Paneer Tikka, 1x Naan', amount: '₹650', status: 'In Progress', time: '5 mins ago', type: 'Delivery' },
-    { id: '#ORD-7820', customer: 'Priya Patel', items: '1x Butter Chicken, 2x Roti', amount: '₹420', status: 'Ready', time: '12 mins ago', type: 'Pickup' },
-    { id: '#ORD-7819', customer: 'Amit Kumar', items: '3x Veg Biryani', amount: '₹890', status: 'Delivered', time: '25 mins ago', type: 'Delivery' },
-    { id: '#ORD-7818', customer: 'Sneha Gupta', items: '1x Chole Bhature', amount: '₹180', status: 'Cancelled', time: '45 mins ago', type: 'Delivery' },
-    { id: '#ORD-7817', customer: 'Vikram Singh', items: '1x Dal Makhani, 2x Garlic Naan', amount: '₹550', status: 'Delivered', time: '1 hour ago', type: 'Delivery' },
-    { id: '#ORD-7816', customer: 'Anjali Ray', items: '2x Masala Dosa', amount: '₹320', status: 'Delivered', time: '2 hours ago', type: 'Pickup' },
+export default function RestaurantMenu() {
+  const menuItems = [
+    { id: 1, name: 'Paneer Tikka', category: 'Starters', price: '₹320', status: 'Available', orders: 145, image: 'https://images.unsplash.com/photo-1567184109411-b2033d9c79e6?w=100&h=100&fit=crop' },
+    { id: 2, name: 'Butter Chicken', category: 'Main Course', price: '₹450', status: 'Available', orders: 230, image: 'https://images.unsplash.com/photo-1603894584202-9ca82424c9ad?w=100&h=100&fit=crop' },
+    { id: 3, name: 'Veg Biryani', category: 'Main Course', price: '₹380', status: 'Out of Stock', orders: 189, image: 'https://images.unsplash.com/photo-1563379091339-03b21bc4a4f8?w=100&h=100&fit=crop' },
+    { id: 4, name: 'Garlic Naan', category: 'Bread', price: '₹60', status: 'Available', orders: 450, image: 'https://images.unsplash.com/photo-1533777324545-e016b7a224d8?w=100&h=100&fit=crop' },
+    { id: 5, name: 'Gulab Jamun', category: 'Dessert', price: '₹120', status: 'Available', orders: 98, image: 'https://images.unsplash.com/photo-1589119908995-c6837fa14848?w=100&h=100&fit=crop' },
   ];
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'In Progress': return 'text-blue-600 border-blue-200 bg-blue-50';
-      case 'Ready': return 'text-yellow-600 border-yellow-200 bg-yellow-50';
-      case 'Delivered': return 'text-green-600 border-green-200 bg-green-50';
-      case 'Cancelled': return 'text-red-600 border-red-200 bg-red-50';
-      default: return '';
-    }
-  };
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'In Progress': return <Clock className="w-4 h-4" />;
-      case 'Ready': return <Bell className="w-4 h-4" />;
-      case 'Delivered': return <CheckCircle2 className="w-4 h-4" />;
-      case 'Cancelled': return <AlertCircle className="w-4 h-4" />;
-      default: return null;
-    }
-  };
 
   return (
     <div className="min-h-screen bg-slate-50 flex">
@@ -87,14 +65,14 @@ export default function RestaurantOrders() {
             </Button>
           </Link>
           <Link href="/restaurant/orders">
-            <Button variant="secondary" className="w-full justify-start gap-3 bg-orange-50 text-orange-600 hover:bg-orange-100">
+            <Button variant="ghost" className="w-full justify-start gap-3 text-slate-600">
               <ShoppingBag className="w-4 h-4" />
               Orders
               <Badge className="ml-auto bg-orange-100 text-orange-600 border-none">5</Badge>
             </Button>
           </Link>
           <Link href="/restaurant/menu">
-            <Button variant="ghost" className="w-full justify-start gap-3 text-slate-600">
+            <Button variant="secondary" className="w-full justify-start gap-3 bg-orange-50 text-orange-600 hover:bg-orange-100">
               <MenuIcon className="w-4 h-4" />
               Menu Management
             </Button>
@@ -130,7 +108,7 @@ export default function RestaurantOrders() {
           <div className="flex items-center gap-4 flex-1">
             <div className="relative w-96 max-w-full">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <Input placeholder="Search orders, customers..." className="pl-10 bg-slate-50 border-none" />
+              <Input placeholder="Search dishes..." className="pl-10 bg-slate-50 border-none" />
             </div>
           </div>
           
@@ -154,87 +132,93 @@ export default function RestaurantOrders() {
         <div className="p-8">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-2xl font-bold">Order Management</h1>
-              <p className="text-slate-500">Manage and track your restaurant orders in real-time.</p>
+              <h1 className="text-2xl font-bold">Menu Management</h1>
+              <p className="text-slate-500">Add, edit and manage your restaurant menu items.</p>
             </div>
             <div className="flex gap-3">
               <Button variant="outline" className="gap-2">
-                <Download className="w-4 h-4" />
-                Export CSV
-              </Button>
-              <Button className="bg-orange-600 hover:bg-orange-700 gap-2">
                 <Filter className="w-4 h-4" />
                 Filter
+              </Button>
+              <Button className="bg-orange-600 hover:bg-orange-700 gap-2">
+                <Plus className="w-4 h-4" />
+                Add Item
               </Button>
             </div>
           </div>
 
           <Card>
             <CardHeader className="border-b border-slate-100">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <Button variant="ghost" className="text-orange-600 border-b-2 border-orange-600 rounded-none h-10 px-4">All Orders</Button>
-                  <Button variant="ghost" className="text-slate-500 hover:text-slate-700 h-10 px-4">Pending</Button>
-                  <Button variant="ghost" className="text-slate-500 hover:text-slate-700 h-10 px-4">Ready</Button>
-                  <Button variant="ghost" className="text-slate-500 hover:text-slate-700 h-10 px-4">Completed</Button>
-                </div>
+              <div className="flex items-center gap-4">
+                <Button variant="ghost" className="text-orange-600 border-b-2 border-orange-600 rounded-none h-10 px-4">All Items</Button>
+                <Button variant="ghost" className="text-slate-500 hover:text-slate-700 h-10 px-4">Starters</Button>
+                <Button variant="ghost" className="text-slate-500 hover:text-slate-700 h-10 px-4">Main Course</Button>
+                <Button variant="ghost" className="text-slate-500 hover:text-slate-700 h-10 px-4">Desserts</Button>
               </div>
             </CardHeader>
             <CardContent className="p-0">
               <Table>
                 <TableHeader>
                   <TableRow className="bg-slate-50 hover:bg-slate-50">
-                    <TableHead className="w-[120px] font-semibold">Order ID</TableHead>
-                    <TableHead className="font-semibold">Customer</TableHead>
-                    <TableHead className="font-semibold">Items</TableHead>
-                    <TableHead className="font-semibold">Type</TableHead>
-                    <TableHead className="font-semibold">Amount</TableHead>
+                    <TableHead className="w-[80px]">Image</TableHead>
+                    <TableHead className="font-semibold">Name</TableHead>
+                    <TableHead className="font-semibold">Category</TableHead>
+                    <TableHead className="font-semibold">Price</TableHead>
                     <TableHead className="font-semibold">Status</TableHead>
-                    <TableHead className="font-semibold">Time</TableHead>
+                    <TableHead className="font-semibold">Orders</TableHead>
                     <TableHead className="text-right font-semibold">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {orders.map((order) => (
-                    <TableRow key={order.id} className="group hover:bg-slate-50/50">
-                      <TableCell className="font-medium text-slate-900">{order.id}</TableCell>
-                      <TableCell>{order.customer}</TableCell>
-                      <TableCell className="max-w-[200px] truncate text-slate-500">{order.items}</TableCell>
+                  {menuItems.map((item) => (
+                    <TableRow key={item.id} className="group hover:bg-slate-50/50">
+                      <TableCell>
+                        <div className="w-12 h-12 rounded-lg bg-slate-100 overflow-hidden relative">
+                          {item.image ? (
+                            <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-slate-400">
+                              <ImageIcon className="w-5 h-5" />
+                            </div>
+                          )}
+                        </div>
+                      </TableCell>
+                      <TableCell className="font-medium text-slate-900">{item.name}</TableCell>
                       <TableCell>
                         <Badge variant="outline" className="font-normal border-slate-200">
-                          {order.type}
+                          {item.category}
                         </Badge>
                       </TableCell>
-                      <TableCell className="font-semibold">{order.amount}</TableCell>
+                      <TableCell className="font-semibold">{item.price}</TableCell>
                       <TableCell>
-                        <Badge variant="outline" className={`gap-1.5 px-3 py-1 font-medium ${getStatusColor(order.status)}`}>
-                          {getStatusIcon(order.status)}
-                          {order.status}
+                        <Badge variant="outline" className={`font-medium ${
+                          item.status === 'Available' ? 'text-green-600 border-green-200 bg-green-50' : 'text-red-600 border-red-200 bg-red-50'
+                        }`}>
+                          {item.status}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-slate-500">{order.time}</TableCell>
+                      <TableCell className="text-slate-500">{item.orders} times</TableCell>
                       <TableCell className="text-right">
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 group-hover:text-slate-600">
-                              <MoreVertical className="h-4 w-4" />
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end" className="w-48">
-                            <DropdownMenuItem className="gap-2">
-                              <ExternalLink className="w-4 h-4" />
-                              View Details
-                            </DropdownMenuItem>
-                            <DropdownMenuItem className="gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-green-600" />
-                              Mark as Ready
-                            </DropdownMenuItem>
-                            <DropdownMenuItem className="gap-2 text-red-600">
-                              <AlertCircle className="w-4 h-4" />
-                              Cancel Order
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
+                        <div className="flex items-center justify-end gap-2">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-blue-600 hover:bg-blue-50">
+                            <Edit2 className="h-4 w-4" />
+                          </Button>
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-red-600 hover:bg-red-50">
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400">
+                                <MoreVertical className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuItem>Mark as Unavailable</DropdownMenuItem>
+                              <DropdownMenuItem>Duplicate Item</DropdownMenuItem>
+                              <DropdownMenuItem className="text-red-600">Delete Permanently</DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </div>
                       </TableCell>
                     </TableRow>
                   ))}

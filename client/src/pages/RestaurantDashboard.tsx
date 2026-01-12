@@ -62,10 +62,12 @@ export default function RestaurantDashboard() {
               <Badge className="ml-auto bg-orange-100 text-orange-600 border-none">5</Badge>
             </Button>
           </Link>
-          <Button variant="ghost" className="w-full justify-start gap-3 text-slate-600">
-            <MenuIcon className="w-4 h-4" />
-            Menu Management
-          </Button>
+          <Link href="/restaurant/menu">
+            <Button variant="ghost" className="w-full justify-start gap-3 text-slate-600">
+              <MenuIcon className="w-4 h-4" />
+              Menu Management
+            </Button>
+          </Link>
           <Button variant="ghost" className="w-full justify-start gap-3 text-slate-600">
             <TrendingUp className="w-4 h-4" />
             Analytics
