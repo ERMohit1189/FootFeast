@@ -15,8 +15,11 @@ export default function RestaurantLogin() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would connect to the backend
-    setLocation('/restaurant/dashboard');
+    if (email === 'admin@restaurant.com' && password === 'admin123') {
+      setLocation('/restaurant/dashboard');
+    } else {
+      alert('Invalid credentials. Hint: use admin@restaurant.com / admin123');
+    }
   };
 
   return (
