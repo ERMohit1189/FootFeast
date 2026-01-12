@@ -101,7 +101,7 @@ export default function RestaurantDashboard() {
               Menu Management
             </Button>
           </Link>
-          <Link href="/admin/analytics">
+          <Link href="/restaurant/analytics">
             <Button variant="ghost" className="w-full justify-start gap-3 text-slate-600">
               <TrendingUp className="w-4 h-4" />
               Analytics

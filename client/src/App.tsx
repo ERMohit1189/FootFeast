@@ -12,6 +12,7 @@ import RestaurantLogin from "@/pages/RestaurantLogin";
 import RestaurantDashboard from "@/pages/RestaurantDashboard";
 import RestaurantOrders from "@/pages/RestaurantOrders";
 import RestaurantMenu from "@/pages/RestaurantMenu";
+import RestaurantAnalyticsDetailed from "@/pages/RestaurantAnalyticsDetailed";
 import Cart from "@/pages/Cart";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
@@ -42,6 +43,7 @@ function Router() {
       <Route path="/restaurant/dashboard" component={RestaurantDashboard} />
       <Route path="/restaurant/orders" component={RestaurantOrders} />
       <Route path="/restaurant/menu" component={RestaurantMenu} />
+      <Route path="/restaurant/analytics" component={RestaurantAnalyticsDetailed} />
       <Route path="/restaurant/:id" component={Restaurant} />
       <Route path="/cart" component={Cart} />
       <Route path="/login" component={Login} />
