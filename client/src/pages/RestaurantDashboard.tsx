@@ -55,11 +55,13 @@ export default function RestaurantDashboard() {
               Dashboard
             </Button>
           </Link>
-          <Button variant="ghost" className="w-full justify-start gap-3 text-slate-600">
-            <ShoppingBag className="w-4 h-4" />
-            Orders
-            <Badge className="ml-auto bg-orange-100 text-orange-600 border-none">5</Badge>
-          </Button>
+          <Link href="/restaurant/orders">
+            <Button variant="ghost" className="w-full justify-start gap-3 text-slate-600">
+              <ShoppingBag className="w-4 h-4" />
+              Orders
+              <Badge className="ml-auto bg-orange-100 text-orange-600 border-none">5</Badge>
+            </Button>
+          </Link>
           <Button variant="ghost" className="w-full justify-start gap-3 text-slate-600">
             <MenuIcon className="w-4 h-4" />
             Menu Management
@@ -156,7 +158,9 @@ export default function RestaurantDashboard() {
                   <CardTitle>Recent Orders</CardTitle>
                   <CardDescription>A list of your most recent transactions.</CardDescription>
                 </div>
-                <Button variant="ghost" size="sm" className="text-orange-600">View All</Button>
+                <Link href="/restaurant/orders">
+                  <Button variant="ghost" size="sm" className="text-orange-600">View All</Button>
+                </Link>
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
