@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ShoppingBag, 
   LayoutDashboard, 
@@ -15,12 +16,15 @@ import {
   MoreVertical,
   ChevronRight,
   Filter,
-  Image as ImageIcon
+  Image as ImageIcon,
+  X as CloseIcon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { Link } from 'wouter';
 import {
   Table,
@@ -36,15 +40,45 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function RestaurantMenu() {
-  const menuItems = [
+  const [isAddingItem, setIsAddingItem] = useState(false);
+  const [menuItems, setMenuItems] = useState([
     { id: 1, name: 'Paneer Tikka', category: 'Starters', price: '₹320', status: 'Available', orders: 145, image: 'https://images.unsplash.com/photo-1567184109411-b2033d9c79e6?w=100&h=100&fit=crop' },
     { id: 2, name: 'Butter Chicken', category: 'Main Course', price: '₹450', status: 'Available', orders: 230, image: 'https://images.unsplash.com/photo-1603894584202-9ca82424c9ad?w=100&h=100&fit=crop' },
     { id: 3, name: 'Veg Biryani', category: 'Main Course', price: '₹380', status: 'Out of Stock', orders: 189, image: 'https://images.unsplash.com/photo-1563379091339-03b21bc4a4f8?w=100&h=100&fit=crop' },
     { id: 4, name: 'Garlic Naan', category: 'Bread', price: '₹60', status: 'Available', orders: 450, image: 'https://images.unsplash.com/photo-1533777324545-e016b7a224d8?w=100&h=100&fit=crop' },
     { id: 5, name: 'Gulab Jamun', category: 'Dessert', price: '₹120', status: 'Available', orders: 98, image: 'https://images.unsplash.com/photo-1589119908995-c6837fa14848?w=100&h=100&fit=crop' },
-  ];
+  ]);
+
+  const [newItem, setNewItem] = useState({
+    name: '',
+    category: 'Starters',
+    price: '',
+    description: '',
+    status: 'Available'
+  });
+
+  const handleAddItem = (e: React.FormEvent) => {
+    e.preventDefault();
+    const item = {
+      ...newItem,
+      id: menuItems.length + 1,
+      orders: 0,
+      price: `₹${newItem.price}`,
+      image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop'
+    };
+    setMenuItems([item, ...menuItems]);
+    setIsAddingItem(false);
+    setNewItem({ name: '', category: 'Starters', price: '', description: '', status: 'Available' });
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 flex">
@@ -140,12 +174,99 @@ export default function RestaurantMenu() {
                 <Filter className="w-4 h-4" />
                 Filter
               </Button>
-              <Button className="bg-orange-600 hover:bg-orange-700 gap-2">
+              <Button 
+                className="bg-orange-600 hover:bg-orange-700 gap-2"
+                onClick={() => setIsAddingItem(true)}
+              >
                 <Plus className="w-4 h-4" />
                 Add Item
               </Button>
             </div>
           </div>
+
+          <AnimatePresence>
+            {isAddingItem && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="mb-8"
+              >
+                <Card className="border-orange-200 bg-orange-50/30">
+                  <CardHeader className="flex flex-row items-center justify-between">
+                    <div>
+                      <CardTitle>Add New Menu Item</CardTitle>
+                      <CardDescription>Fill in the details to add a new dish to your menu.</CardDescription>
+                    </div>
+                    <Button variant="ghost" size="icon" onClick={() => setIsAddingItem(false)}>
+                      <CloseIcon className="w-5 h-5" />
+                    </Button>
+                  </CardHeader>
+                  <CardContent>
+                    <form onSubmit={handleAddItem} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="name">Item Name</Label>
+                          <Input 
+                            id="name" 
+                            placeholder="e.g. Masala Dosa" 
+                            required 
+                            value={newItem.name}
+                            onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="category">Category</Label>
+                          <Select 
+                            value={newItem.category}
+                            onValueChange={(value) => setNewItem({ ...newItem, category: value })}
+                          >
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select category" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="Starters">Starters</SelectItem>
+                              <SelectItem value="Main Course">Main Course</SelectItem>
+                              <SelectItem value="Bread">Bread</SelectItem>
+                              <SelectItem value="Dessert">Dessert</SelectItem>
+                              <SelectItem value="Beverages">Beverages</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="price">Price (₹)</Label>
+                          <Input 
+                            id="price" 
+                            type="number" 
+                            placeholder="0.00" 
+                            required 
+                            value={newItem.price}
+                            onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="description">Description</Label>
+                          <Textarea 
+                            id="description" 
+                            placeholder="Describe the dish..." 
+                            className="h-[115px]" 
+                            value={newItem.description}
+                            onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}
+                          />
+                        </div>
+                        <div className="flex justify-end gap-3 pt-2">
+                          <Button variant="outline" type="button" onClick={() => setIsAddingItem(false)}>Cancel</Button>
+                          <Button type="submit" className="bg-orange-600 hover:bg-orange-700">Save Item</Button>
+                        </div>
+                      </div>
+                    </form>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <Card>
             <CardHeader className="border-b border-slate-100">
