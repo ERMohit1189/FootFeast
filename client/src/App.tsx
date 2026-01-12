@@ -38,13 +38,10 @@ function Router() {
       <Route path="/home1" component={Home1} />
       <Route path="/home2" component={Home2} />
       <Route path="/home3" component={Home3} />
-<<<<<<< HEAD
       <Route path="/restaurant/login" component={RestaurantLogin} />
       <Route path="/restaurant/dashboard" component={RestaurantDashboard} />
       <Route path="/restaurant/orders" component={RestaurantOrders} />
       <Route path="/restaurant/menu" component={RestaurantMenu} />
-=======
->>>>>>> 0e04964beb3e4bcff8cc0805fe7d4c090c8388de
       <Route path="/restaurant/:id" component={Restaurant} />
       <Route path="/cart" component={Cart} />
       <Route path="/login" component={Login} />
