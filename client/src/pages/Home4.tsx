@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Search, ShoppingBag, Star, Clock, MapPin, ChevronRight, Heart, Zap, Award } from "lucide-react";
+import { Search, ShoppingBag, Star, Clock, MapPin, ChevronRight, Heart, Zap, Award, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -45,6 +45,49 @@ const RESTAURANTS = [
     category: "Pasta • Italian",
     tag: "Bestseller",
     tagColor: "bg-yellow-100 text-yellow-700"
+  }
+];
+
+const TOP_SELLING = [
+  {
+    id: 1,
+    name: "Classic Paneer Tikka",
+    restaurant: "Tandoori Nights",
+    price: "₹320",
+    rating: 4.9,
+    orders: "1.2k+ sold",
+    image: "https://images.unsplash.com/photo-1567184109411-b2033d9c79e6?w=300&h=300&fit=crop",
+    color: "bg-orange-50"
+  },
+  {
+    id: 2,
+    name: "Butter Chicken",
+    restaurant: "Golden Dragon",
+    price: "₹450",
+    rating: 4.8,
+    orders: "2.5k+ sold",
+    image: "https://images.unsplash.com/photo-1603894584202-9ca82424c9ad?w=300&h=300&fit=crop",
+    color: "bg-red-50"
+  },
+  {
+    id: 3,
+    name: "Veggie Supreme Pizza",
+    restaurant: "Pizza Hut",
+    price: "₹599",
+    rating: 4.7,
+    orders: "3.1k+ sold",
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300&h=300&fit=crop",
+    color: "bg-yellow-50"
+  },
+  {
+    id: 4,
+    name: "Double Cheese Burger",
+    restaurant: "Burger King",
+    price: "₹249",
+    rating: 4.6,
+    orders: "4.2k+ sold",
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=300&fit=crop",
+    color: "bg-blue-50"
   }
 ];
 
@@ -112,6 +155,56 @@ export default function Home4() {
           <Button variant="ghost" className="text-orange-600 font-bold group">
             See All <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
           </Button>
+        </div>
+
+        {/* Top Selling Foods Section */}
+        <div className="mb-16 overflow-hidden">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center">
+              <Zap className="w-6 h-6 text-orange-600 fill-orange-600" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-black text-slate-900 leading-none mb-1">Top Selling Foods</h2>
+              <p className="text-slate-500 text-sm font-medium">The dishes everyone is talking about</p>
+            </div>
+          </div>
+          <div className="flex gap-6 overflow-x-auto pb-6 no-scrollbar -mx-4 px-4">
+            {TOP_SELLING.map((food, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -5 }}
+                className="flex-shrink-0 w-72 group cursor-pointer"
+              >
+                <div className={`${food.color} rounded-[2.5rem] p-6 relative overflow-hidden transition-all duration-300 group-hover:shadow-xl`}>
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-black text-slate-900 border border-white">
+                        {food.orders}
+                      </div>
+                      <button className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-slate-900 hover:text-red-500 transition-colors shadow-sm">
+                        <Heart className="w-4 h-4" />
+                      </button>
+                    </div>
+                    <div className="aspect-square rounded-full overflow-hidden mb-6 shadow-2xl border-4 border-white/50 group-hover:scale-105 transition-transform duration-500">
+                      <img src={food.image} alt={food.name} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="text-center">
+                      <h3 className="font-black text-slate-900 text-lg line-clamp-1 mb-1">{food.name}</h3>
+                      <p className="text-slate-500 text-xs mb-3">{food.restaurant}</p>
+                      <div className="flex items-center justify-between mt-auto">
+                        <span className="text-xl font-black text-slate-900">{food.price}</span>
+                        <Button size="sm" className="rounded-xl bg-slate-900 hover:bg-orange-600 text-white font-bold h-9">
+                          Add <Plus className="w-3 h-3 ml-1" />
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Decorative element */}
+                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-white/20 rounded-full blur-3xl group-hover:bg-white/30 transition-colors"></div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* Advertisement Section */}
