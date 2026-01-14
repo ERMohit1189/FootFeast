@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, 
   ShoppingBag, 
@@ -18,7 +16,8 @@ import {
   Filter,
   Send,
   X,
-  Sparkles
+  Sparkles,
+  MessageSquare
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -33,6 +32,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const customers = [
   { 
@@ -84,20 +84,23 @@ const customers = [
 export default function RestaurantCustomers() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMailOpen, setIsMailOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('email');
   const [mailForm, setMailForm] = useState({ subject: '', content: '' });
+  const [smsForm, setSmsForm] = useState({ content: '' });
   const [isSending, setIsSending] = useState(false);
 
-  const handleSendMail = async (e: React.FormEvent) => {
+  const handleSendMarketing = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSending(true);
     
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
     
-    toast.success('Marketing mail sent successfully to all customers!');
+    toast.success(`Marketing ${activeTab === 'email' ? 'email' : 'SMS'} sent successfully to all customers!`);
     setIsSending(false);
     setIsMailOpen(false);
     setMailForm({ subject: '', content: '' });
+    setSmsForm({ content: '' });
   };
 
   return (
@@ -294,39 +297,73 @@ export default function RestaurantCustomers() {
                 </Button>
               </div>
               
-              <form onSubmit={handleSendMail} className="p-6 space-y-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700">Subject Line</label>
-                  <Input 
-                    required
-                    placeholder="e.g. Weekend Special: 20% Off on All Biryanis!"
-                    value={mailForm.subject}
-                    onChange={(e) => setMailForm({...mailForm, subject: e.target.value})}
-                    className="border-slate-200 focus:ring-orange-500"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <label className="text-sm font-semibold text-slate-700">Email Content</label>
-                    <Button type="button" variant="ghost" size="sm" className="text-orange-600 text-xs gap-1">
-                      <Sparkles className="w-3 h-3" />
-                      AI Rewrite
-                    </Button>
-                  </div>
-                  <Textarea 
-                    required
-                    placeholder="Write your message here..."
-                    className="min-h-[200px] border-slate-200 focus:ring-orange-500"
-                    value={mailForm.content}
-                    onChange={(e) => setMailForm({...mailForm, content: e.target.value})}
-                  />
-                  <p className="text-[10px] text-slate-400 italic">
-                    Tip: Personalize with {"{customer_name}"} to increase engagement.
-                  </p>
-                </div>
+              <form onSubmit={handleSendMarketing} className="p-6">
+                <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                  <TabsList className="grid w-full grid-cols-2 mb-6">
+                    <TabsTrigger value="email" className="gap-2">
+                      <Mail className="w-4 h-4" />
+                      Email
+                    </TabsTrigger>
+                    <TabsTrigger value="sms" className="gap-2">
+                      <MessageSquare className="w-4 h-4" />
+                      SMS
+                    </TabsTrigger>
+                  </TabsList>
 
-                <div className="pt-4 flex items-center gap-3">
+                  <TabsContent value="email" className="space-y-4">
+                    <div className="space-y-2">
+                      <label className="text-sm font-semibold text-slate-700">Subject Line</label>
+                      <Input 
+                        required={activeTab === 'email'}
+                        placeholder="e.g. Weekend Special: 20% Off on All Biryanis!"
+                        value={mailForm.subject}
+                        onChange={(e) => setMailForm({...mailForm, subject: e.target.value})}
+                        className="border-slate-200 focus:ring-orange-500"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <label className="text-sm font-semibold text-slate-700">Email Content</label>
+                        <Button type="button" variant="ghost" size="sm" className="text-orange-600 text-xs gap-1">
+                          <Sparkles className="w-3 h-3" />
+                          AI Rewrite
+                        </Button>
+                      </div>
+                      <Textarea 
+                        required={activeTab === 'email'}
+                        placeholder="Write your email message here..."
+                        className="min-h-[200px] border-slate-200 focus:ring-orange-500"
+                        value={mailForm.content}
+                        onChange={(e) => setMailForm({...mailForm, content: e.target.value})}
+                      />
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="sms" className="space-y-4">
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <label className="text-sm font-semibold text-slate-700">SMS Message</label>
+                        <span className="text-[10px] text-slate-400">
+                          {smsForm.content.length}/160 characters
+                        </span>
+                      </div>
+                      <Textarea 
+                        required={activeTab === 'sms'}
+                        placeholder="Write your SMS message here..."
+                        className="min-h-[120px] border-slate-200 focus:ring-orange-500"
+                        value={smsForm.content}
+                        onChange={(e) => setSmsForm({...smsForm, content: e.target.value})}
+                        maxLength={160}
+                      />
+                      <p className="text-[10px] text-slate-400 italic">
+                        SMS rates apply. Keep it short and impactful.
+                      </p>
+                    </div>
+                  </TabsContent>
+                </Tabs>
+
+                <div className="pt-6 flex items-center gap-3 border-t border-slate-100 mt-6">
                   <Button 
                     type="button" 
                     variant="outline" 
@@ -343,7 +380,7 @@ export default function RestaurantCustomers() {
                     {isSending ? (
                       <div className="flex items-center gap-2">
                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Sending to {customers.length} users...
+                        Sending...
                       </div>
                     ) : (
                       <div className="flex items-center gap-2">
