@@ -227,18 +227,11 @@ export default function RestaurantCustomers() {
                             </Badge>
                           </td>
                           <td className="px-6 py-4 text-right">
-                            <DropdownMenu>
-                              <DropdownMenuTrigger asChild>
-                                <Button variant="ghost" size="icon">
-                                  <MoreVertical className="w-4 h-4 text-slate-400" />
-                                </Button>
-                              </DropdownMenuTrigger>
-                              <DropdownMenuContent align="end">
-                                <DropdownMenuItem>View Profile</DropdownMenuItem>
-                                <DropdownMenuItem>Order History</DropdownMenuItem>
-                                <DropdownMenuItem className="text-red-600">Block Customer</DropdownMenuItem>
-                              </DropdownMenuContent>
-                            </DropdownMenu>
+                            <Link href={`/restaurant/customer/${customer.id}`}>
+                              <Button variant="ghost" size="icon">
+                                <ChevronRight className="w-4 h-4 text-slate-400" />
+                              </Button>
+                            </Link>
                           </td>
                         </tr>
                       ))}
