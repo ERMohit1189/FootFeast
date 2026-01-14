@@ -177,9 +177,12 @@ export default function RestaurantCustomers() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon">
-              <Bell className="w-5 h-5 text-slate-600" />
-            </Button>
+            <Link href="/restaurant/notifications">
+              <Button variant="ghost" size="icon" className="relative">
+                <Bell className="w-5 h-5 text-slate-600" />
+                <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
+              </Button>
+            </Link>
             <div className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden border border-slate-200">
               <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100&h=100&fit=crop" alt="User" />
             </div>

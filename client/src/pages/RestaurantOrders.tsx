@@ -135,10 +135,12 @@ export default function RestaurantOrders() {
           </div>
           
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="relative">
-              <Bell className="w-5 h-5 text-slate-600" />
-              <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
-            </Button>
+            <Link href="/restaurant/notifications">
+              <Button variant="ghost" size="icon" className="relative">
+                <Bell className="w-5 h-5 text-slate-600" />
+                <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
+              </Button>
+            </Link>
             <div className="flex items-center gap-3 pl-4 border-l border-slate-200">
               <div className="text-right hidden sm:block">
                 <p className="text-sm font-semibold">Tandoori Nights</p>
