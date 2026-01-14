@@ -305,6 +305,76 @@ export default function Home4() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Modern Footer */}
+      <footer className="bg-slate-900 text-slate-300 py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div className="space-y-6">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-xl bg-orange-600 flex items-center justify-center">
+                  <ShoppingBag className="w-6 h-6 text-white" />
+                </div>
+                <span className="font-black text-2xl text-white">FootFeast</span>
+              </div>
+              <p className="text-slate-400 leading-relaxed">
+                Making delicious food accessible to everyone. The fastest delivery service in your neighborhood.
+              </p>
+              <div className="flex items-center gap-4">
+                <Button variant="ghost" size="icon" className="rounded-full bg-white/5 hover:bg-orange-600 hover:text-white border border-white/10 transition-all">
+                  <Zap className="w-4 h-4" />
+                </Button>
+                <Button variant="ghost" size="icon" className="rounded-full bg-white/5 hover:bg-orange-600 hover:text-white border border-white/10 transition-all">
+                  <Star className="w-4 h-4" />
+                </Button>
+                <Button variant="ghost" size="icon" className="rounded-full bg-white/5 hover:bg-orange-600 hover:text-white border border-white/10 transition-all">
+                  <Heart className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-white font-black mb-6">Quick Links</h4>
+              <ul className="space-y-4">
+                <li><Link href="/" className="hover:text-orange-500 transition-colors">Home</Link></li>
+                <li><Link href="/restaurant/login" className="hover:text-orange-500 transition-colors">Restaurant Login</Link></li>
+                <li><Link href="/admin/login" className="hover:text-orange-500 transition-colors">Admin Panel</Link></li>
+                <li><Link href="/delivery/login" className="hover:text-orange-500 transition-colors">Partner with Us</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-black mb-6">Help & Support</h4>
+              <ul className="space-y-4">
+                <li><a href="#" className="hover:text-orange-500 transition-colors">FAQs</a></li>
+                <li><a href="#" className="hover:text-orange-500 transition-colors">Contact Support</a></li>
+                <li><a href="#" className="hover:text-orange-500 transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-orange-500 transition-colors">Terms of Service</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-black mb-6">Newsletter</h4>
+              <p className="text-slate-400 mb-6 text-sm">Subscribe to get latest updates and offers.</p>
+              <div className="flex gap-2">
+                <Input className="bg-white/5 border-white/10 text-white placeholder:text-slate-500" placeholder="Email address" />
+                <Button className="bg-orange-600 hover:bg-orange-700 text-white font-bold">
+                  Join
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+            <p>© 2026 FootFeast. All rights reserved.</p>
+            <div className="flex items-center gap-6">
+              <span className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-orange-500" /> Bengaluru, India
+              </span>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
