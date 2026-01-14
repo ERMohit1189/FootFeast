@@ -107,10 +107,12 @@ export default function RestaurantDashboard() {
               Analytics
             </Button>
           </Link>
-          <Button variant="ghost" className="w-full justify-start gap-3 text-slate-600">
-            <Users className="w-4 h-4" />
-            Customers
-          </Button>
+          <Link href="/restaurant/customers">
+            <Button variant="ghost" className="w-full justify-start gap-3 text-slate-600">
+              <Users className="w-4 h-4" />
+              Customers
+            </Button>
+          </Link>
         </nav>
 
         <div className="p-4 border-t border-slate-100">
