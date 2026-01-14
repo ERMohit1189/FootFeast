@@ -7,6 +7,7 @@ import Home from "@/pages/Home";
 import Home1 from "@/pages/Home1";
 import Home2 from "@/pages/Home2";
 import Home3 from "@/pages/Home3";
+import Home4 from "@/pages/Home4";
 import Restaurant from "@/pages/Restaurant";
 import RestaurantLogin from "@/pages/RestaurantLogin";
 import RestaurantDashboard from "@/pages/RestaurantDashboard";
@@ -53,6 +54,7 @@ function Router() {
       <Route path="/restaurant/customer/:id" component={CustomerProfile} />
       <Route path="/restaurant/notifications" component={Notifications} />
       <Route path="/restaurant/:id" component={Restaurant} />
+      <Route path="/home4" component={Home4} />
       <Route path="/cart" component={Cart} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
