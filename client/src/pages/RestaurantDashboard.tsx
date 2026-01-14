@@ -165,7 +165,7 @@ export default function RestaurantDashboard() {
             </div>
             <div className="flex gap-3">
               <Button variant="outline">Download Report</Button>
-              <Link href="/add-restaurant">
+              <Link href="/restaurant/menu/add">
                 <Button className="bg-orange-600 hover:bg-orange-700">Add New Menu Item</Button>
               </Link>
             </div>
