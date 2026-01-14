@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, 
   ShoppingBag, 
@@ -15,7 +15,10 @@ import {
   Calendar,
   ChevronRight,
   MoreVertical,
-  Filter
+  Filter,
+  Send,
+  X,
+  Sparkles
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -28,6 +31,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Textarea } from '@/components/ui/textarea';
+import { toast } from 'sonner';
 
 const customers = [
   { 
@@ -78,9 +83,25 @@ const customers = [
 
 export default function RestaurantCustomers() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMailOpen, setIsMailOpen] = useState(false);
+  const [mailForm, setMailForm] = useState({ subject: '', content: '' });
+  const [isSending, setIsSending] = useState(false);
+
+  const handleSendMail = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSending(true);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    toast.success('Marketing mail sent successfully to all customers!');
+    setIsSending(false);
+    setIsMailOpen(false);
+    setMailForm({ subject: '', content: '' });
+  };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-slate-50 flex relative">
       {/* Sidebar - Same as Dashboard */}
       <aside className="w-64 bg-white border-r border-slate-200 hidden md:flex flex-col">
         <div className="p-6 border-b border-slate-100 flex items-center gap-2">
@@ -171,7 +192,11 @@ export default function RestaurantCustomers() {
                 <Filter className="w-4 h-4" />
                 Filter
               </Button>
-              <Button className="bg-orange-600 hover:bg-orange-700 gap-2">
+              <Button 
+                onClick={() => setIsMailOpen(true)}
+                className="bg-orange-600 hover:bg-orange-700 gap-2"
+              >
+                <Send className="w-4 h-4" />
                 Send Marketing Mail
               </Button>
             </div>
@@ -243,6 +268,97 @@ export default function RestaurantCustomers() {
           </div>
         </div>
       </main>
+
+      {/* Marketing Mail Modal */}
+      <AnimatePresence>
+        {isMailOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden"
+            >
+              <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-orange-600 text-white">
+                <div className="flex items-center gap-2">
+                  <Send className="w-5 h-5" />
+                  <h2 className="text-xl font-bold">New Marketing Campaign</h2>
+                </div>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => setIsMailOpen(false)}
+                  className="text-white hover:bg-white/10"
+                >
+                  <X className="w-5 h-5" />
+                </Button>
+              </div>
+              
+              <form onSubmit={handleSendMail} className="p-6 space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-slate-700">Subject Line</label>
+                  <Input 
+                    required
+                    placeholder="e.g. Weekend Special: 20% Off on All Biryanis!"
+                    value={mailForm.subject}
+                    onChange={(e) => setMailForm({...mailForm, subject: e.target.value})}
+                    className="border-slate-200 focus:ring-orange-500"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <label className="text-sm font-semibold text-slate-700">Email Content</label>
+                    <Button type="button" variant="ghost" size="sm" className="text-orange-600 text-xs gap-1">
+                      <Sparkles className="w-3 h-3" />
+                      AI Rewrite
+                    </Button>
+                  </div>
+                  <Textarea 
+                    required
+                    placeholder="Write your message here..."
+                    className="min-h-[200px] border-slate-200 focus:ring-orange-500"
+                    value={mailForm.content}
+                    onChange={(e) => setMailForm({...mailForm, content: e.target.value})}
+                  />
+                  <p className="text-[10px] text-slate-400 italic">
+                    Tip: Personalize with {"{customer_name}"} to increase engagement.
+                  </p>
+                </div>
+
+                <div className="pt-4 flex items-center gap-3">
+                  <Button 
+                    type="button" 
+                    variant="outline" 
+                    className="flex-1"
+                    onClick={() => setIsMailOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+                  <Button 
+                    type="submit" 
+                    className="flex-[2] bg-orange-600 hover:bg-orange-700"
+                    disabled={isSending}
+                  >
+                    {isSending ? (
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        Sending to {customers.length} users...
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <Send className="w-4 h-4" />
+                        Send Campaign
+                      </div>
+                    )}
+                  </Button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
+
