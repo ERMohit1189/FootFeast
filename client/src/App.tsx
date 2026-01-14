@@ -16,6 +16,7 @@ import AddMenuItem from "@/pages/AddMenuItem";
 import RestaurantAnalyticsDetailed from "@/pages/RestaurantAnalyticsDetailed";
 import RestaurantCustomers from "@/pages/RestaurantCustomers";
 import CustomerProfile from "@/pages/CustomerProfile";
+import Notifications from "@/pages/Notifications";
 import Cart from "@/pages/Cart";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
@@ -50,6 +51,7 @@ function Router() {
       <Route path="/restaurant/analytics" component={RestaurantAnalyticsDetailed} />
       <Route path="/restaurant/customers" component={RestaurantCustomers} />
       <Route path="/restaurant/customer/:id" component={CustomerProfile} />
+      <Route path="/restaurant/notifications" component={Notifications} />
       <Route path="/restaurant/:id" component={Restaurant} />
       <Route path="/cart" component={Cart} />
       <Route path="/login" component={Login} />
