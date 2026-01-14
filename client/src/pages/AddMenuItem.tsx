@@ -30,10 +30,31 @@ export default function AddMenuItem() {
     name: '',
     description: '',
     price: '',
+    mrp: '',
+    discountAmount: '',
+    discountPercent: '',
     category: '',
     isAvailable: true,
     image: ''
   });
+
+  const calculateDiscountFromAmount = (amount: string, mrpVal: string) => {
+    if (!amount || !mrpVal || parseFloat(mrpVal) === 0) return '';
+    const percent = (parseFloat(amount) / parseFloat(mrpVal)) * 100;
+    return percent.toFixed(2);
+  };
+
+  const calculateDiscountFromPercent = (percent: string, mrpVal: string) => {
+    if (!percent || !mrpVal) return '';
+    const amount = (parseFloat(percent) / 100) * parseFloat(mrpVal);
+    return amount.toFixed(2);
+  };
+
+  const updatePrice = (mrpVal: string, discountAmt: string) => {
+    if (!mrpVal) return '';
+    const price = parseFloat(mrpVal) - (parseFloat(discountAmt) || 0);
+    return price.toFixed(2);
+  };
 
   const categories = [
     'Starters',
@@ -102,16 +123,22 @@ export default function AddMenuItem() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-slate-700">Price (₹)</label>
+                    <label className="text-sm font-semibold text-slate-700">MRP (₹)</label>
                     <div className="relative">
                       <IndianRupee className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                       <Input 
                         required 
                         type="number" 
-                        placeholder="299"
+                        placeholder="399"
                         className="pl-10"
-                        value={formData.price}
-                        onChange={(e) => setFormData({...formData, price: e.target.value})}
+                        value={formData.mrp}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          const discountAmt = formData.discountAmount;
+                          const newPrice = updatePrice(val, discountAmt);
+                          const newPercent = calculateDiscountFromAmount(discountAmt, val);
+                          setFormData({...formData, mrp: val, price: newPrice, discountPercent: newPercent});
+                        }}
                       />
                     </div>
                   </div>
@@ -130,6 +157,49 @@ export default function AddMenuItem() {
                         ))}
                       </SelectContent>
                     </Select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-slate-700">Discount (₹)</label>
+                    <Input 
+                      type="number" 
+                      placeholder="100"
+                      value={formData.discountAmount}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const newPrice = updatePrice(formData.mrp, val);
+                        const newPercent = calculateDiscountFromAmount(val, formData.mrp);
+                        setFormData({...formData, discountAmount: val, price: newPrice, discountPercent: newPercent});
+                      }}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-slate-700">Discount (%)</label>
+                    <Input 
+                      type="number" 
+                      placeholder="25"
+                      value={formData.discountPercent}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const newAmt = calculateDiscountFromPercent(val, formData.mrp);
+                        const newPrice = updatePrice(formData.mrp, newAmt);
+                        setFormData({...formData, discountPercent: val, discountAmount: newAmt, price: newPrice});
+                      }}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-slate-700">Selling Price (₹)</label>
+                    <div className="relative">
+                      <IndianRupee className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                      <Input 
+                        readOnly
+                        className="pl-10 bg-slate-50 font-bold text-orange-600"
+                        value={formData.price}
+                        placeholder="299"
+                      />
+                    </div>
                   </div>
                 </div>
               </CardContent>
