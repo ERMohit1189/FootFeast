@@ -41,6 +41,7 @@ export function Header({ theme }: { theme?: 'light' | 'dark' }) {
                   <Link href="/home1" className="text-sm px-2 py-1 rounded hover:bg-muted/10 focus:outline-none focus:ring-2 focus:ring-primary whitespace-nowrap">Home1</Link>
                   <Link href="/home2" className="text-sm px-2 py-1 rounded hover:bg-muted/10 focus:outline-none focus:ring-2 focus:ring-primary whitespace-nowrap">Home2</Link>
                   <Link href="/home3" className="text-sm px-2 py-1 rounded hover:bg-muted/10 focus:outline-none focus:ring-2 focus:ring-primary whitespace-nowrap">Home3</Link>
+                  <Link href="/home4" className="text-sm px-2 py-1 rounded hover:bg-muted/10 focus:outline-none focus:ring-2 focus:ring-primary whitespace-nowrap">Home4</Link>
                 </nav>
               </motion.div>
             </Link>
@@ -161,6 +162,7 @@ export function Header({ theme }: { theme?: 'light' | 'dark' }) {
                 <Link href="/home1" className="p-3 rounded-xl hover:bg-muted/10 focus:outline-none focus:ring-2 focus:ring-primary">Home1</Link>
                 <Link href="/home2" className="p-3 rounded-xl hover:bg-muted/10 focus:outline-none focus:ring-2 focus:ring-primary">Home2</Link>
                 <Link href="/home3" className="p-3 rounded-xl hover:bg-muted/10 focus:outline-none focus:ring-2 focus:ring-primary">Home3</Link>
+                <Link href="/home4" className="p-3 rounded-xl hover:bg-muted/10 focus:outline-none focus:ring-2 focus:ring-primary">Home4</Link>
                 <Link href="/" className="p-3 rounded-xl hover:bg-muted/10 focus:outline-none focus:ring-2 focus:ring-primary">Main</Link>
               </div>
 
