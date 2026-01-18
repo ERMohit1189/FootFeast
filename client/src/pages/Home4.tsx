@@ -240,36 +240,31 @@ export default function Home4() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-3 gap-6 mb-20">
           {RESTAURANTS.map((res) => (
             <Link key={res.id} href={`/restaurant/${res.id}`}>
               <motion.div 
                 whileHover={{ y: -8 }}
                 className="group cursor-pointer"
               >
-                <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden mb-4 shadow-xl">
+                <div className="relative aspect-video rounded-3xl overflow-hidden mb-4 shadow-lg">
                   <img src={res.image} alt={res.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute top-4 left-4">
-                    <Badge className={`${res.tagColor} border-none font-bold rounded-full px-3 py-1 shadow-sm`}>
+                  <div className="absolute top-3 left-3">
+                    <Badge className={`${res.tagColor} border-none font-bold rounded-full px-2 py-0 text-[10px] shadow-sm`}>
                       {res.tag}
                     </Badge>
                   </div>
-                  <button className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white hover:text-red-500 transition-colors">
-                    <Heart className="w-5 h-5" />
-                  </button>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
-                <div className="px-2">
+                <div className="px-1">
                   <div className="flex items-center justify-between mb-1">
-                    <h3 className="text-xl font-black text-slate-900">{res.name}</h3>
-                    <div className="flex items-center gap-1 bg-green-50 text-green-700 px-2 py-0.5 rounded-lg text-sm font-bold">
-                      <Star className="w-3 h-3 fill-green-700" /> {res.rating}
+                    <h3 className="text-sm font-black text-slate-900 truncate">{res.name}</h3>
+                    <div className="flex items-center gap-0.5 bg-green-50 text-green-700 px-1.5 py-0.5 rounded-lg text-[10px] font-bold">
+                      <Star className="w-2.5 h-2.5 fill-green-700" /> {res.rating}
                     </div>
                   </div>
-                  <p className="text-slate-500 text-sm mb-2">{res.category}</p>
-                  <div className="flex items-center gap-4 text-xs font-bold text-slate-400">
-                    <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-orange-500" /> {res.time}</span>
-                    <span className="flex items-center gap-1"><ShoppingBag className="w-3 h-3 text-orange-500" /> No Min. Order</span>
+                  <p className="text-slate-500 text-[10px] mb-2 truncate">{res.category}</p>
+                  <div className="flex items-center gap-3 text-[10px] font-bold text-slate-400">
+                    <span className="flex items-center gap-1"><Clock className="w-2.5 h-2.5 text-orange-500" /> {res.time}</span>
                   </div>
                 </div>
               </motion.div>

@@ -56,31 +56,33 @@ export default function Home3() {
                 <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=1400&h=400&fit=crop" alt="Banner" className="w-full h-48 object-cover" />
               </motion.div>
 
-              <div className="space-y-4">
+              <div className="grid grid-cols-3 gap-4">
                 {restaurants.map((r) => (
-                  <motion.div key={r.id} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Number(r.id) * 0.05 }} className="bg-white rounded-2xl shadow p-4 flex gap-4 items-center">
-                    <div className="w-28 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                  <motion.div key={r.id} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Number(r.id) * 0.05 }} className="bg-white rounded-2xl shadow-sm p-3 flex flex-col gap-2">
+                    <div className="aspect-video rounded-lg overflow-hidden flex-shrink-0">
                       <img src={r.image} alt={r.name} className="w-full h-full object-cover" />
                     </div>
 
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <h4 className="font-bold">{r.name}</h4>
-                        <div className="text-sm text-muted-foreground">{r.distance}</div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2">
+                        <h4 className="font-bold text-sm truncate">{r.name}</h4>
+                        <div className="text-[10px] text-muted-foreground whitespace-nowrap">{r.distance}</div>
                       </div>
 
-                      <p className="text-sm text-muted-foreground mt-1">{r.cuisine}</p>
+                      <p className="text-[10px] text-muted-foreground truncate">{r.cuisine}</p>
 
-                      <div className="mt-3 flex items-center gap-3">
-                        <div className="text-sm bg-primary/10 text-primary px-2 py-1 rounded"><span className="mr-1">{r.rating}</span><svg className="w-4 h-4 inline-block" viewBox="0 0 24 24" fill="currentColor" stroke={STAR_STROKE} strokeWidth={0.6} strokeLinejoin="round" strokeLinecap="round" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
-                        <div className="text-sm text-muted-foreground">{r.deliveryTime} • {r.deliveryFee}</div>
+                      <div className="mt-2 flex items-center justify-between">
+                        <div className="text-[10px] bg-primary/10 text-primary px-1.5 py-0.5 rounded flex items-center gap-0.5">
+                          <span>{r.rating}</span>
+                          <Star className="w-2.5 h-2.5 fill-primary" />
+                        </div>
+                        <div className="text-[10px] text-muted-foreground truncate">{r.deliveryTime}</div>
                       </div>
 
-                      <div className="mt-3 flex items-center gap-2">
+                      <div className="mt-3">
                         <Link href={`/restaurant/${r.id}`}>
-                          <a className="text-sm font-medium text-primary hover:underline">View menu →</a>
+                          <Button size="sm" variant="outline" className="w-full text-[10px] h-7 rounded-lg">View menu</Button>
                         </Link>
-                        <button className="ml-auto px-3 py-2 rounded-md bg-primary text-white">Add to cart</button>
                       </div>
                     </div>
                   </motion.div>

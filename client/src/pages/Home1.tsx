@@ -507,7 +507,24 @@ export default function Home1() {
                 </div>
                 </div>
 
-                <div className="relative z-10">
+                <div className="relative z-10 grid grid-cols-3 gap-2">
+                  {categories.map((c) => (
+                    <button
+                      key={c.id}
+                      onClick={() => setActiveCategory(c.id)}
+                      className={`flex flex-col items-center justify-center p-2 rounded-xl transition-all ${
+                        activeCategory === c.id
+                          ? 'bg-primary text-white shadow-md scale-105'
+                          : 'bg-white/5 hover:bg-white/10 text-muted-foreground'
+                      }`}
+                    >
+                      {renderCategoryIcon(c)}
+                      <span className="text-[10px] mt-1 font-medium truncate w-full text-center">{c.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </aside>
                   <p className="text-sm text-muted-foreground mb-2">Categories</p>
                   <div className="flex flex-col space-y-2">
                     {categories.map(c => (
