@@ -10,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { ChevronLeft, ChevronRight, ChevronDown, Sliders, Sun, Moon, LayoutGrid, List, Home as HomeIcon } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import VideoSlider from '@/components/VideoSlider';
+import { Badge } from '@/components/ui/badge';
 
 export default function Home2() {
   const [query, setQuery] = useState('');
@@ -458,29 +459,31 @@ export default function Home2() {
 
       <main className="flex-1">
         {/* Video slider inserted on top with headline & CTAs */}
-        <VideoSlider
-          videos={videoList}
-          className="mb-6"
-          title="India's #1 food delivery app"
-          subtitle="Experience fast & easy online ordering on the FoodDash app"
-          ctas={[{ label: 'Get it on Google Play', href: 'https://play.google.com', primary: true }, { label: 'Download on the App Store', href: 'https://www.apple.com/app-store/' } ]}
-          scrollTarget="#hero"
-        />
+        <div className="px-4">
+          <VideoSlider
+            videos={videoList}
+            className="mb-6 rounded-3xl overflow-hidden"
+            title="India's #1 food delivery app"
+            subtitle="Experience fast & easy online ordering on the FoodDash app"
+            ctas={[{ label: 'Get it on Google Play', href: 'https://play.google.com', primary: true }, { label: 'Download on the App Store', href: 'https://www.apple.com/app-store/' } ]}
+            scrollTarget="#hero"
+          />
+        </div>
 
         {/* Hero (layout varies: A=centered, B=split, C=compact) */}
-        <section id="hero" className="relative py-16" style={pageTheme === 'dark' ? undefined : { background: 'var(--section-bg)', color: 'var(--section-text)' }}>
+        <section id="hero" className="relative py-8 md:py-16" style={pageTheme === 'dark' ? undefined : { background: 'var(--section-bg)', color: 'var(--section-text)' }}>
           <div className="max-w-[78rem] mx-auto px-4">
             {heroLayout === 'A' && (
-              <div className={`relative text-center rounded-3xl p-8 backdrop-blur-sm shadow-md`} style={pageTheme === 'dark' ? undefined : { background: 'var(--section-bg)', color: 'var(--section-text)' }}>
+              <div className={`relative text-center rounded-3xl p-6 md:p-8 backdrop-blur-sm shadow-md`} style={pageTheme === 'dark' ? undefined : { background: 'var(--section-bg)', color: 'var(--section-text)' }}>
                 {/* Accent bar */}
-                <div className="absolute left-6 top-6 h-12 w-1 rounded-full bg-primary/90" aria-hidden="true" />
+                <div className="absolute left-6 top-6 h-12 w-1 rounded-full bg-primary/90 hidden md:block" aria-hidden="true" />
 
-                <motion.h1 initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-4xl md:text-5xl font-extrabold" style={pageTheme === 'dark' ? undefined : { color: 'var(--heading)' }}>Find food you love</motion.h1>
-                <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="mt-4 text-muted-foreground">Search restaurants, dishes or cuisines nearby</motion.p>
+                <motion.h1 initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-3xl md:text-5xl font-extrabold" style={pageTheme === 'dark' ? undefined : { color: 'var(--heading)' }}>Find food you love</motion.h1>
+                <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="mt-4 text-sm md:text-base text-muted-foreground">Search restaurants, dishes or cuisines nearby</motion.p>
 
-                <motion.div initial={{ scale: 0.98 }} animate={{ scale: 1 }} transition={{ delay: 0.15 }} className="mt-8 flex items-center gap-3 justify-center">
+                <motion.div initial={{ scale: 0.98 }} animate={{ scale: 1 }} transition={{ delay: 0.15 }} className="mt-8 flex flex-col sm:flex-row items-center gap-3 justify-center">
                   <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search for pizza, burgers, sushi..." className="w-full max-w-3xl px-6 py-4 rounded-full border border-border/20 shadow-lg focus:ring-2 focus:ring-primary" />
-                  <button className="px-6 py-3 rounded-full bg-primary text-white">Search</button>
+                  <button className="w-full sm:w-auto px-6 py-4 sm:py-3 rounded-full bg-primary text-white font-bold">Search</button>
                 </motion.div>
 
               <div className="mt-6 flex flex-wrap justify-center gap-3">

@@ -8,6 +8,7 @@ import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Sliders, X, Sun, Moon, LayoutGrid, List, ChevronLeft, ChevronRight, ChevronDown, Home as HomeIcon, Star } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Home1() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -483,45 +484,53 @@ export default function Home1() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-8">
             {/* Left: Filters (highlighted card) */}
-            <aside className="hidden lg:block col-span-1 sticky top-24 self-start">
+            <aside className="lg:col-span-1 sticky top-24 self-start">
               <div className={`${filterContainerClasses}`}>
-                {/* Left accent stripe (conditional) */}
-                {showStripe && (
-                  <div className={`absolute left-0 top-4 bottom-4 ${stripeWidthClass} rounded-l-2xl bg-gradient-to-b from-primary to-orange-400`} />
-                )}
-
-                <div className="flex items-center justify-between relative z-10">
+                {/* Mobile Toggle for Filters */}
+                <div className="lg:hidden flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold flex items-center gap-3">
                     <span className="inline-flex items-center justify-center w-8 h-8 rounded-md bg-primary text-white">F</span>
                     Filters
                   </h3>
-
-                  <div className="flex items-center gap-4">
-                  <button
-                    onClick={() => { setActiveCategory('all'); setFilterStyle('glass'); }}
-                    className="text-sm text-muted-foreground hover:text-primary transition"
-                    aria-label="Clear filters"
-                  >
-                    Clear
-                  </button>
-                </div>
+                  <Button variant="ghost" size="sm" onClick={() => setShowOptions(!showOptions)}>
+                    {showOptions ? <X className="w-5 h-5" /> : <Sliders className="w-5 h-5" />}
+                  </Button>
                 </div>
 
-                <div className="relative z-10 grid grid-cols-3 gap-2">
-                  {categories.map((c) => (
-                    <button
-                      key={c.id}
-                      onClick={() => setActiveCategory(c.id)}
-                      className={`flex flex-col items-center justify-center p-2 rounded-xl transition-all ${
-                        activeCategory === c.id
-                          ? 'bg-primary text-white shadow-md scale-105'
-                          : 'bg-white/5 hover:bg-white/10 text-muted-foreground'
-                      }`}
-                    >
-                      {renderCategoryIcon(c)}
-                      <span className="text-[10px] mt-1 font-medium truncate w-full text-center">{c.name}</span>
-                    </button>
-                  ))}
+                <div className={`${showOptions ? 'block' : 'hidden lg:block'} space-y-4`}>
+                  <div className="flex items-center justify-between relative z-10">
+                    <h3 className="hidden lg:flex text-lg font-semibold items-center gap-3">
+                      <span className="inline-flex items-center justify-center w-8 h-8 rounded-md bg-primary text-white">F</span>
+                      Filters
+                    </h3>
+
+                    <div className="flex items-center gap-4 ml-auto">
+                      <button
+                        onClick={() => { setActiveCategory('all'); setFilterStyle('glass'); }}
+                        className="text-sm text-muted-foreground hover:text-primary transition"
+                        aria-label="Clear filters"
+                      >
+                        Clear
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div className="relative z-10 grid grid-cols-3 lg:grid-cols-3 gap-2">
+                    {categories.map((c) => (
+                      <button
+                        key={c.id}
+                        onClick={() => setActiveCategory(c.id)}
+                        className={`flex flex-col items-center justify-center p-2 rounded-xl transition-all ${
+                          activeCategory === c.id
+                            ? 'bg-primary text-white shadow-md scale-105'
+                            : 'bg-white/5 hover:bg-white/10 text-muted-foreground'
+                        }`}
+                      >
+                        {renderCategoryIcon(c)}
+                        <span className="text-[10px] mt-1 font-medium truncate w-full text-center">{c.name}</span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="relative z-10">

@@ -49,15 +49,15 @@ export default function Home3() {
     <div className="min-h-screen flex flex-col bg-[url('/patterns/dots.svg')] bg-gradient-to-br from-orange-50 via-background to-yellow-50">
       <Header />
 
-      <main className="flex-1 py-12">
+      <main className="flex-1 py-6 md:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-8">
-            <div className="lg:w-2/3">
+            <div className="lg:w-2/3 order-2 lg:order-1">
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-6 rounded-2xl overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=1400&h=400&fit=crop" alt="Banner" className="w-full h-48 object-cover" />
+                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=1400&h=400&fit=crop" alt="Banner" className="w-full h-32 md:h-48 object-cover" />
               </motion.div>
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {restaurants.map((r) => (
                   <motion.div key={r.id} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Number(r.id) * 0.05 }} className="bg-white rounded-2xl shadow-sm p-3 flex flex-col gap-2">
                     <div className="aspect-video rounded-lg overflow-hidden flex-shrink-0">

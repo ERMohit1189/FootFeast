@@ -240,34 +240,34 @@ export default function Home4() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
           {RESTAURANTS.map((res) => (
             <Link key={res.id} href={`/restaurant/${res.id}`}>
               <motion.div 
                 whileHover={{ y: -8 }}
-                className="group cursor-pointer"
+                className="group cursor-pointer bg-white rounded-3xl p-2 shadow-sm border border-slate-100"
               >
-                <div className="relative aspect-video rounded-3xl overflow-hidden mb-4 shadow-lg">
+                <div className="relative aspect-video rounded-[2rem] overflow-hidden mb-4 shadow-lg">
                   <img src={res.image} alt={res.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute top-3 left-3">
-                    <Badge className={`${res.tagColor} border-none font-bold rounded-full px-2 py-0 text-[10px] shadow-sm`}>
+                    <Badge className={`${res.tagColor} border-none font-bold rounded-full px-3 py-1 text-xs shadow-sm`}>
                       {res.tag}
                     </Badge>
                   </div>
-                  <button className="absolute top-4 right-4 w-8 h-8 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white hover:text-red-500 transition-colors">
-                    <Heart className="w-4 h-4" />
+                  <button className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white hover:text-red-500 transition-colors">
+                    <Heart className="w-5 h-5" />
                   </button>
                 </div>
-                <div className="px-1">
-                  <div className="flex items-center justify-between mb-1">
-                    <h3 className="text-[11px] font-black text-slate-900 truncate">{res.name}</h3>
-                    <div className="flex items-center gap-0.5 bg-green-50 text-green-700 px-1.5 py-0.5 rounded-lg text-[9px] font-bold">
-                      <Star className="w-2.5 h-2.5 fill-green-700" /> {res.rating}
+                <div className="px-4 pb-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-lg font-black text-slate-900 truncate">{res.name}</h3>
+                    <div className="flex items-center gap-1 bg-green-50 text-green-700 px-2 py-1 rounded-xl text-xs font-bold">
+                      <Star className="w-3.5 h-3.5 fill-green-700" /> {res.rating}
                     </div>
                   </div>
-                  <p className="text-slate-500 text-[9px] mb-2 truncate">{res.category}</p>
-                  <div className="flex items-center gap-3 text-[9px] font-bold text-slate-400">
-                    <span className="flex items-center gap-1"><Clock className="w-2.5 h-2.5 text-orange-500" /> {res.time}</span>
+                  <p className="text-slate-500 text-sm mb-3 truncate">{res.category}</p>
+                  <div className="flex items-center gap-4 text-xs font-bold text-slate-400">
+                    <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-orange-500" /> {res.time}</span>
                   </div>
                 </div>
               </motion.div>
