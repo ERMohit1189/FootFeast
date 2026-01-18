@@ -1,6 +1,7 @@
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Categories } from '@/components/Categories';
+import { FoodItems } from '@/components/FoodItems';
 import { RestaurantGrid } from '@/components/RestaurantGrid';
 import { CartSidebar } from '@/components/CartSidebar';
 import { Footer } from '@/components/Footer';
@@ -152,6 +153,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <FoodItems />
 
         <RestaurantGrid title="Featured Restaurants" showFeatured limit={8} />
         <RestaurantGrid title="All Restaurants Near You" limit={8} />
