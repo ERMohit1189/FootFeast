@@ -6,7 +6,7 @@ import { RestaurantCard } from '@/components/RestaurantCard';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Sliders, X, Sun, Moon, LayoutGrid, List, ChevronLeft, ChevronRight, ChevronDown, Home as HomeIcon } from 'lucide-react';
+import { Sliders, X, Sun, Moon, LayoutGrid, List, ChevronLeft, ChevronRight, ChevronDown, Home as HomeIcon, Star } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 
 export default function Home1() {
@@ -522,25 +522,6 @@ export default function Home1() {
                       <span className="text-[10px] mt-1 font-medium truncate w-full text-center">{c.name}</span>
                     </button>
                   ))}
-                </div>
-              </div>
-            </aside>
-                  <p className="text-sm text-muted-foreground mb-2">Categories</p>
-                  <div className="flex flex-col space-y-2">
-                    {categories.map(c => (
-                      <button
-                        key={c.id}
-                        onClick={() => setActiveCategory(c.id)}
-                        aria-pressed={activeCategory === c.id}
-                        className={`text-left px-3 py-2 rounded-md transition flex items-center gap-3 ${activeCategory === c.id ? 'bg-primary/20 text-primary ring-1 ring-primary/30 font-semibold' : 'hover:bg-primary/10'}`}
-                      >
-                        <span className="w-8 h-8 flex items-center justify-center rounded bg-white/5 text-sm">
-                          {renderCategoryIcon(c)}
-                        </span>
-                        <span>{c.name}</span>
-                      </button>
-                    ))}
-                  </div>
                 </div>
 
                 <div className="relative z-10">

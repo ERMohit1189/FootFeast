@@ -4,7 +4,8 @@ import { CartSidebar } from '@/components/CartSidebar';
 import { restaurants } from '@/lib/store';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import { ChevronDown, Sliders } from 'lucide-react';
+import { Star, ChevronDown, Sliders } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { useState, useRef, useEffect } from 'react';
 
 export default function Home3() {

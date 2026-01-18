@@ -240,7 +240,7 @@ export default function Home4() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-3 gap-6 mb-20">
+        <div className="grid grid-cols-3 gap-4 mb-20">
           {RESTAURANTS.map((res) => (
             <Link key={res.id} href={`/restaurant/${res.id}`}>
               <motion.div 
@@ -254,16 +254,19 @@ export default function Home4() {
                       {res.tag}
                     </Badge>
                   </div>
+                  <button className="absolute top-4 right-4 w-8 h-8 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white hover:text-red-500 transition-colors">
+                    <Heart className="w-4 h-4" />
+                  </button>
                 </div>
                 <div className="px-1">
                   <div className="flex items-center justify-between mb-1">
-                    <h3 className="text-sm font-black text-slate-900 truncate">{res.name}</h3>
-                    <div className="flex items-center gap-0.5 bg-green-50 text-green-700 px-1.5 py-0.5 rounded-lg text-[10px] font-bold">
+                    <h3 className="text-[11px] font-black text-slate-900 truncate">{res.name}</h3>
+                    <div className="flex items-center gap-0.5 bg-green-50 text-green-700 px-1.5 py-0.5 rounded-lg text-[9px] font-bold">
                       <Star className="w-2.5 h-2.5 fill-green-700" /> {res.rating}
                     </div>
                   </div>
-                  <p className="text-slate-500 text-[10px] mb-2 truncate">{res.category}</p>
-                  <div className="flex items-center gap-3 text-[10px] font-bold text-slate-400">
+                  <p className="text-slate-500 text-[9px] mb-2 truncate">{res.category}</p>
+                  <div className="flex items-center gap-3 text-[9px] font-bold text-slate-400">
                     <span className="flex items-center gap-1"><Clock className="w-2.5 h-2.5 text-orange-500" /> {res.time}</span>
                   </div>
                 </div>
