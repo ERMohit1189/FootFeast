@@ -16,7 +16,7 @@ const ADVERTISEMENTS = [
     title: "First Order: 50% OFF",
     subtitle: "Use code: NEW50",
     description: "Valid on all restaurants. Maximum discount ₹150.",
-    icon: <ShoppingBag className="w-40 h-40" />,
+    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
     color: "from-blue-600 to-indigo-700",
     badge: "Limited Offer",
     badgeColor: "bg-white/20 text-white",
@@ -28,7 +28,7 @@ const ADVERTISEMENTS = [
     title: "Become a Driver",
     subtitle: "Earn up to ₹30k/month",
     description: "Join India's largest delivery fleet with flexible hours.",
-    icon: <Zap className="w-40 h-40" />,
+    image: "https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=800&q=80",
     color: "from-purple-600 to-pink-600",
     badge: "Partner Program",
     badgeColor: "bg-white/20 text-white",
@@ -40,7 +40,7 @@ const ADVERTISEMENTS = [
     title: "Free Delivery",
     subtitle: "On your first 3 orders",
     description: "No minimum order value required. Try it today!",
-    icon: <Clock className="w-40 h-40" />,
+    image: "https://images.unsplash.com/photo-1526367790999-0150786486a9?w=800&q=80",
     color: "from-emerald-600 to-teal-700",
     badge: "Exclusive",
     badgeColor: "bg-white/20 text-white",
@@ -52,7 +52,7 @@ const ADVERTISEMENTS = [
     title: "Refer & Earn",
     subtitle: "Get ₹100 for each friend",
     description: "Share the love of food and earn wallet credits.",
-    icon: <Gift className="w-40 h-40" />,
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",
     color: "from-orange-500 to-amber-600",
     badge: "Referral",
     badgeColor: "bg-white/20 text-white",
@@ -112,8 +112,13 @@ export default function Home() {
                     </Button>
                   </div>
                   
-                  <div className="absolute right-0 bottom-0 opacity-20 group-hover:opacity-30 transition-opacity transform translate-x-10 translate-y-10">
-                    {ADVERTISEMENTS[adIndex].icon}
+                  <div className="absolute right-0 top-0 bottom-0 w-1/3 md:w-1/2 hidden sm:block">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/20 z-10" />
+                    <img 
+                      src={ADVERTISEMENTS[adIndex].image} 
+                      alt={ADVERTISEMENTS[adIndex].title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </motion.div>
               </AnimatePresence>
