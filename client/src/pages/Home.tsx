@@ -40,7 +40,7 @@ const ADVERTISEMENTS = [
     title: "Free Delivery",
     subtitle: "On your first 3 orders",
     description: "No minimum order value required. Try it today!",
-    image: "https://images.unsplash.com/photo-1526367790999-0150786486a9?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80",
     color: "from-emerald-600 to-teal-700",
     badge: "Exclusive",
     badgeColor: "bg-white/20 text-white",
