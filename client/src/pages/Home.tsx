@@ -153,8 +153,8 @@ export default function Home() {
           </div>
         </section>
 
-        <RestaurantGrid title="Featured Restaurants" showFeatured limit={4} />
-        <RestaurantGrid title="All Restaurants Near You" />
+        <RestaurantGrid title="Featured Restaurants" showFeatured limit={8} />
+        <RestaurantGrid title="All Restaurants Near You" limit={8} />
       </main>
       <CartSidebar />
       <Footer />
